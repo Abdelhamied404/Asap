@@ -1,0 +1,50 @@
+@import "../../../styles/all.inc.scss";
+
+nav,
+nav .nav-bar,
+nav menu ul,
+nav .profile {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+}
+
+nav {
+  .nav-bar {
+    .logo {
+      img {
+        max-width: 100px;
+      }
+    }
+    menu {
+      margin-left: 60px;
+      ul {
+        list-style-type: none;
+
+        li {
+          margin: 0 20px;
+          a {
+            color: $gray;
+            text-decoration: none;
+            font-size: 18px;
+          }
+          &.active a {
+            color: $daccent;
+            font-weight: bold;
+          }
+        }
+      }
+    }
+  }
+  .profile {
+    .name {
+      margin-right: 20px;
+    }
+    img {
+      width: 50px;
+      border-radius: 25px;
+    }
+  }
+}

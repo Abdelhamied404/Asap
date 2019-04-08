@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import Aux from "./containers/hoc";
 import { Switch, Route } from "react-router-dom";
-import Splash from "./pages/splash";
+
+// pages
+import Dashboard from "./pages/dashboard";
 
 class Layout extends Component {
   state = {};
@@ -9,7 +11,7 @@ class Layout extends Component {
     return (
       <Aux>
         <Switch>
-          <Route path="/" exact component={Splash} />
+          <Route path="/" exact component={Dashboard} />
         </Switch>
       </Aux>
     );
