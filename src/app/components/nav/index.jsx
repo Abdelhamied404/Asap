@@ -1,38 +1,40 @@
 import React from "react";
-
 import "./nav.scss";
+import NavProfile from "../nav-profile";
+import { NavLink } from "react-router-dom";
 
 const Nav = props => {
   return (
     <nav>
       <div className="nav-bar">
         <div className="logo">
-          <img
-            src={require("../../../assets/images/nav-logo.svg")}
-            alt="logo"
-          />
+          <NavLink to="/" exact>
+            <img
+              src={require("../../../assets/images/nav-logo.svg")}
+              alt="logo"
+            />
+          </NavLink>
         </div>
         <menu>
           <ul>
             <li className="active">
-              <a href="/">Home</a>
+              <NavLink to="/" exact>
+                Home
+              </NavLink>
             </li>
             <li>
-              <a href="/community">Community</a>
+              <NavLink to="/community">community</NavLink>
             </li>
             <li>
-              <a href="/Reserve">Reserve</a>
+              <NavLink to="/Reserve">Reserve</NavLink>
             </li>
             <li>
-              <a href="/find">find</a>
+              <NavLink to="/find">find</NavLink>
             </li>
           </ul>
         </menu>
       </div>
-      <div className="profile">
-        <div className="name">{props.user.name}</div>
-        <img src={props.user.avatar} alt="" />
-      </div>
+      {props.profile ? <NavProfile isAuth user={props.user} /> : null}
     </nav>
   );
 };

@@ -1,0 +1,16 @@
+@import "../../../styles/all.inc.scss";
+
+.recommended {
+  margin: 25px 60px 10px;
+  .doctors {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .title {
+    font-size: 20px;
+    color: $gray;
+    font-weight: 600;
+  }
+}

@@ -1,0 +1,15 @@
+@import "../../../styles/all.inc.scss";
+
+.sections {
+  margin: 25px 60px 10px;
+  .specialities {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+  }
+  .title {
+    font-size: 20px;
+    color: $gray;
+    font-weight: 600;
+  }
+}
