@@ -2,6 +2,7 @@ import React from "react";
 import "./nav.scss";
 import NavProfile from "../nav-profile";
 import { NavLink } from "react-router-dom";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 const Nav = props => {
   return (
@@ -34,9 +35,21 @@ const Nav = props => {
           </ul>
         </menu>
       </div>
-      {props.profile ? <NavProfile isAuth user={props.user} /> : null}
+      {profile(props)}
     </nav>
   );
+};
+
+const profile = props => {
+  if (props.profile) {
+    if (props.isAuth === 1) {
+      return <NavProfile isAuth user={props.user} />;
+    } else if (props.isAuth === 0) {
+      return <CircularProgress />;
+    } else {
+      return <NavProfile />;
+    }
+  }
 };
 
 export default Nav;

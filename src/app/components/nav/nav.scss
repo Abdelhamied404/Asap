@@ -3,7 +3,7 @@
 nav,
 nav .nav-bar,
 nav menu ul,
-nav .profile {
+nav .profile .chip {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -39,12 +39,17 @@ nav {
     }
   }
   .profile {
+    .chip {
+      padding: 0 10px;
+    }
     .name {
       margin-right: 20px;
       text-transform: capitalize;
     }
     img {
       width: 50px;
+      height: 50px;
+      object-fit: cover;
       border-radius: 25px;
     }
   }

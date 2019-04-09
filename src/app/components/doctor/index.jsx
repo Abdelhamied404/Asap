@@ -5,11 +5,11 @@ import "./doctor.scss";
 
 const Doctor = props => {
   return (
-    <NavLink to={"user/" + props.username}>
+    <NavLink to={"user/" + props.user.username}>
       <div className="doctor">
-        <img src={props.avatar} alt="" />
+        <img src={props.user.avatar} alt="" />
         <div className="name">
-          <p>{props.name}</p>
+          <p>{props.user.name}</p>
         </div>
       </div>
     </NavLink>

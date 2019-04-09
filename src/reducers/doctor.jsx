@@ -1,23 +1,24 @@
-import { USER } from "../actions/types";
+import { DOCTOR } from "../actions/types";
 
 const INITIAL_STATE = {
-  user: {},
-  isAuth: 0
+  recommended: {},
+  loaded: 0
 };
 
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case USER.AUTH:
+    case DOCTOR.RECOMMENDED:
       return {
         ...state,
-        ...action.payload,
-        isAuth: 1
+        recommended: { ...action.payload },
+        loaded: 1
       };
 
-    case USER.AUTHERR:
+    // on load error
+    case DOCTOR.LOADERR:
       return {
         ...state,
-        isAuth: -1
+        loaded: -1
       };
 
     default:

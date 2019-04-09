@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Doctor from "../../components/doctor";
-
+import { connect } from "react-redux";
+import { getRecommended } from "../../../actions/doctor";
 import "./recommended.scss";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 const Recommended = props => {
   const doctors = [
@@ -27,16 +29,34 @@ const Recommended = props => {
     }
   ];
 
+  useEffect(props.getRecommended, []);
+
   return (
     <div className="recommended">
       <div className="title">Recommended</div>
-      <div className="doctors">{list_doctors(doctors)}</div>
+      <div className="doctors">{list_doctors(props)}</div>
     </div>
   );
 };
 
-const list_doctors = list => {
-  return list.map(doctor => <Doctor {...doctor} key={doctor.username} />);
+const list_doctors = props => {
+  if (props.loaded === 1) {
+    const list = props.recommended.data;
+    return list.map(doctor => <Doctor {...doctor} key={doctor.username} />);
+  } else if (props.loaded === 0) {
+    return <CircularProgress />;
+  } else {
+  }
 };
 
-export default Recommended;
+const mapStateToProps = ({ doctor }) => ({ ...doctor });
+const mapDispatchToProps = dispatch => {
+  return {
+    getRecommended: () => dispatch(getRecommended())
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Recommended);

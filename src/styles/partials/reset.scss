@@ -17,3 +17,6 @@ a:not(.default) {
   text-transform: capitalize;
   color: black;
 }
+button.rounded {
+  border-radius: 100px;
+}
