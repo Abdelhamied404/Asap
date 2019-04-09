@@ -5,7 +5,7 @@ import "./doctor.scss";
 
 const Doctor = props => {
   return (
-    <NavLink to={"user/" + props.user.username}>
+    <NavLink className="doctor-link" to={"user/" + props.user.username}>
       <div className="doctor">
         <img src={props.user.avatar} alt="" />
         <div className="name">

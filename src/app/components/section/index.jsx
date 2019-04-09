@@ -4,7 +4,7 @@ import "./section.scss";
 
 const Section = props => {
   return (
-    <NavLink to={"Speciality/" + props.name}>
+    <NavLink className="section-link" to={"speciality/" + props.name}>
       <div className="section">
         <img src={props.image} alt="" />
         <div className="name">

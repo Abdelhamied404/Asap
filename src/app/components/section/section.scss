@@ -13,3 +13,12 @@
     margin: auto;
   }
 }
+
+.section-link {
+  position: relative;
+  transition: all 200ms ease-in-out;
+}
+.section-link:hover {
+  transform: scale(1.15);
+  z-index: 1;
+}
