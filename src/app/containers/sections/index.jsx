@@ -1,48 +1,47 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import Section from "../../components/section";
-
+import { getSections } from "../../../actions/section";
 import "./sections.scss";
+import { connect } from "react-redux";
+import { CircularProgress } from "@material-ui/core";
 
 const Sections = props => {
-  const sections = [
-    {
-      id: 1,
-      name: "eye",
-      image: "https://via.placeholder.com/200"
-    },
-    {
-      id: 2,
-      name: "ear",
-      image: "https://via.placeholder.com/200"
-    },
-    {
-      id: 3,
-      name: "eye",
-      image: "https://via.placeholder.com/200"
-    },
-    {
-      id: 4,
-      name: "eye",
-      image: "https://via.placeholder.com/200"
-    },
-    {
-      id: 5,
-      name: "eye",
-      image: "https://via.placeholder.com/200"
-    }
-  ];
+  // component did mount alt
+  useEffect(props.getSections, []);
 
   return (
     <div className="sections">
       <div className="title">Specialities</div>
-      <div className="specialities">{list_sections(sections)}</div>
+      <div className="specialities">{list_sections(props)}</div>
     </div>
   );
 };
 
-const list_sections = list => {
-  return list.map(section => <Section {...section} key={section.id} />);
+const list_sections = props => {
+  if (props.loaded === 1) {
+    const list = props.sections.data;
+    return list.map(section => <Section {...section} key={section.id} />);
+  } else if (props.loaded === 0) {
+    return <CircularProgress />;
+  } else {
+    return (
+      <p>
+        can't load sections
+        <br /> <small>please make sure you are connect to internet</small>
+      </p>
+    );
+  }
 };
 
-export default Sections;
+const mapStateToProps = ({ section }) => ({ ...section });
+const mapDispatchToProps = dispatch => {
+  return {
+    getSections: () => dispatch(getSections())
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Sections);

@@ -3,7 +3,9 @@ import Button from "@material-ui/core/Button";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 import { NavLink } from "react-router-dom";
-import { Fab } from "@material-ui/core";
+
+import { logout } from "../../../actions/user";
+import { connect } from "react-redux";
 
 class NavProfile extends Component {
   state = { anchorEl: null };
@@ -48,7 +50,9 @@ class NavProfile extends Component {
           <NavLink to="/settings">
             <MenuItem className="popup-menu-item">Settings</MenuItem>
           </NavLink>
-          <MenuItem className="popup-menu-item">Logout</MenuItem>
+          <MenuItem onClick={this.props.logout} className="popup-menu-item">
+            Logout
+          </MenuItem>
         </Menu>
       </div>
     );
@@ -57,16 +61,26 @@ class NavProfile extends Component {
   NotAuthView = () => {
     return (
       <div className="profile">
-        <Button>
-          <NavLink to="/login">login</NavLink>
+        <Button className="rounded-padd">
+          <NavLink to="/login">login / signup</NavLink>
         </Button>
       </div>
     );
   };
 
   render() {
-    return this.props.isAuth ? this.AuthView(this.props) : this.NotAuthView();
+    return this.props.Auth ? this.AuthView(this.props) : this.NotAuthView();
   }
 }
 
-export default NavProfile;
+const mapStateToProps = ({ user }) => ({ ...user });
+const mapDispatchToProps = dispatch => {
+  return {
+    logout: () => dispatch(logout())
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(NavProfile);

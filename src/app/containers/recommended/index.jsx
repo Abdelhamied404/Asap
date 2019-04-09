@@ -6,29 +6,7 @@ import "./recommended.scss";
 import CircularProgress from "@material-ui/core/CircularProgress";
 
 const Recommended = props => {
-  const doctors = [
-    {
-      name: "ahmed",
-      avatar: "https://via.placeholder.com/150",
-      username: "ahmed"
-    },
-    {
-      name: "mohamed",
-      avatar: "https://via.placeholder.com/150",
-      username: "mohamed"
-    },
-    {
-      name: "mona",
-      avatar: "https://via.placeholder.com/150",
-      username: "mona"
-    },
-    {
-      name: "ali",
-      avatar: "https://via.placeholder.com/150",
-      username: "ali"
-    }
-  ];
-
+  // component did mount alt
   useEffect(props.getRecommended, []);
 
   return (
@@ -42,10 +20,19 @@ const Recommended = props => {
 const list_doctors = props => {
   if (props.loaded === 1) {
     const list = props.recommended.data;
-    return list.map(doctor => <Doctor {...doctor} key={doctor.username} />);
+    if (list.length === 0) {
+      return <p>there is no doctors yet</p>;
+    }
+    return list.map(doctor => <Doctor {...doctor} key={doctor.id} />);
   } else if (props.loaded === 0) {
     return <CircularProgress />;
   } else {
+    return (
+      <p>
+        can't load recommmended doctors
+        <br /> <small>please make sure you are connect to internet</small>
+      </p>
+    );
   }
 };
 

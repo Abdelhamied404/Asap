@@ -24,12 +24,12 @@ export const auth = () => {
     /**
      * testing
      */
-    cookie.set(
-      "auth",
-      "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjM0NTdlMWNiMGMwYmRmNzA4NWVmYmJjNWRjNjU5ODU2ODlkNmRkYjQwYjhhODE3Njk4M2I3M2U4ODY5NDNlNWI3NTM5ZDYyMGE4YThiYTkzIn0.eyJhdWQiOiI2IiwianRpIjoiMzQ1N2UxY2IwYzBiZGY3MDg1ZWZiYmM1ZGM2NTk4NTY4OWQ2ZGRiNDBiOGE4MTc2OTgzYjczZTg4Njk0M2U1Yjc1MzlkNjIwYThhOGJhOTMiLCJpYXQiOjE1NTQ3NDkzNzksIm5iZiI6MTU1NDc0OTM3OSwiZXhwIjoxNTg2MzcxNzc5LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.Lg5q-v9IcxvnQPS07zShALIEnZ8TAUlB7b96It0wo-mtkrnNfeLIRiugaI1Il6FswrpFPltMkAv83x6F1KyEI8wfIia_wRj8iHnof76fIelfbR3twVRwjPPWZ8bsFHCd1Nt8i0AgGQjWBhxn586yn0tQp9bP6k-O192dmoZUiHetaVnWN9faI-XaYzfao4pobDaFO9QMOS-LSWXPzZ0s6mNSogbyUiGAJpCr-t7_zk69gUmZErNTGWlvDaZ7nHhGBzJ1f6j6GhFnP_EwVVUOF4DHKPtwo---7QVN30ROYlqlG6PikmKC_qj1s-0xYm3BxngEtU2tSct6zhTYCD5ZBAX3A91pZBVkd7Ql13Ic_DbHvUedWw6JlHwrw2lwv51lucZDSOMYBKeShQDE4zrgYy1rNq6n0ZWor_jVYrDVPlKICAlvOXcxNKawUH3GlcapW6ICCo22w1CUjf3Q995eTBZgCaybaLYuA51KltHQWc_FT8LGISm7avMA5JdLXmbwmsTE6A1lml-4VZT8e-OWCqfci8CSN-aUwLsp6VTaEAFMBmOYzWQXOoYav8-uCYnkdT5Shgf3Yz_5x7XSs9FvQg_CKFB-nXDslMtAJFcQyDtPIFQFN0Jcbqxj1xSN6pWNBi0a7rP2xyzmbMfm_5c0UIdDMfKVrWThJzszcvaMW2E",
-      100,
-      "/"
-    );
+    // cookie.set(
+    //   "auth",
+    //   "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjEwOWU2YzZiZDNjYzZkZmM5M2RlMmU2MTExMzJiYjZmMmM5YzM4OTc1NzNlMTYzMDM2NzlkMTZlZjYwMWRlZTIzNzRkNzI0NDhhZjIxZmQxIn0.eyJhdWQiOiI2IiwianRpIjoiMTA5ZTZjNmJkM2NjNmRmYzkzZGUyZTYxMTEzMmJiNmYyYzljMzg5NzU3M2UxNjMwMzY3OWQxNmVmNjAxZGVlMjM3NGQ3MjQ0OGFmMjFmZDEiLCJpYXQiOjE1NTQ3OTg2MTQsIm5iZiI6MTU1NDc5ODYxNCwiZXhwIjoxNTg2NDIxMDE0LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.fAqQOsc_4miZPlXu3fHhy_Oix9ea9ZBc0QTDutLnwvenrrQZCuPkw0vqsN8jLJI_M8Hgr-HF6INrkOEM9DtE_4BicVET2MC4Dpt4JE8V7UMkR2ag2QU9bE9HPOOcMXOH1g4Fp8hHM7-YPW9mlYG5udCIeMO43k1s9YbB6P2vGkAFFkLkJJpIEuHGIySMvaimBo2_FMu9fA-s5lDtCc1G8tCV6ike8s0URnNDeIFBUIvoACUbBJZBJFPUfBG4t-L-98YYuEFQ4_tykLazs2gj9uaQTqpO3JEYGoRUIyU7-m3VS1D8CvGSbK4Qc1Dfdu50aVABvbBRLssX3skj_2kAnmPp1GzgKt-YGZxpEjr83oJqTFDkxOFVZrK42aolEgr5CfpAEmckAW_rdWxDhUA0313eneUo_exYZKto_L8DCD9daAc6SCA1rDO-bcRTqvkVbAeij3Pp0CaDd2mCheOuF-71K43Ihs5XtSGzxc5a-TRmhHDERna5u_6VHTxGJcNVOTdEBoZxHonoLu8IMjbsGEdY7_O2zxeR7cqQmH4gOeUmJpWwq15hT-Dcs2uEkSbrMi-WdyxcoYZH-OswX4EzurIWMmbz8evhOznPRIXgWRmElV17B2Yk-Pm4mPpXK-IOaYoD-QGldiOr0yXOR2Li9jqd2C4-vcaOLE1MIkoLZa4",
+    //   100,
+    //   "/"
+    // );
     const token = "Bearer " + cookie.get("auth");
     const conf = {
       headers: {
@@ -45,6 +45,29 @@ export const auth = () => {
       })
       .catch(err => {
         dispatch(AuthErr());
+        console.log(err);
+      });
+  };
+};
+
+export const logout = () => {
+  return dispatch => {
+    const token = "Bearer " + cookie.get("auth");
+    const conf = {
+      headers: {
+        Authorization: token
+      }
+    };
+
+    cookie.set("auth", "any", 0, "/");
+    console.log("logged out");
+
+    API.get("user/logout", conf)
+      .then(res => {
+        let payload = res.data;
+        console.log(payload);
+      })
+      .catch(err => {
         console.log(err);
       });
   };

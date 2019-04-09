@@ -43,7 +43,7 @@ const Nav = props => {
 const profile = props => {
   if (props.profile) {
     if (props.isAuth === 1) {
-      return <NavProfile isAuth user={props.user} />;
+      return <NavProfile Auth user={props.user} />;
     } else if (props.isAuth === 0) {
       return <CircularProgress />;
     } else {

@@ -1,15 +1,17 @@
 import React from "react";
-
+import { NavLink } from "react-router-dom";
 import "./section.scss";
 
 const Section = props => {
   return (
-    <div className="section">
-      <img src={props.image} alt="" />
-      <div className="name">
-        <p>{props.name}</p>
+    <NavLink to={"Speciality/" + props.name}>
+      <div className="section">
+        <img src={props.image} alt="" />
+        <div className="name">
+          <p>{props.name}</p>
+        </div>
       </div>
-    </div>
+    </NavLink>
   );
 };
 
