@@ -12,3 +12,8 @@ export const SECTION = {
   GETSECTIONS: "GETSECTIONS",
   LOADERR: "LOADERR"
 };
+
+export const FORM = {
+  BLUR: "BLUR",
+  VALIDATE: "VALIDATE"
+};

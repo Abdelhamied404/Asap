@@ -1,0 +1,38 @@
+@import "./colors.scss";
+
+@mixin btn($type) {
+  @if $type == "main" {
+    background: linear-gradient(to bottom left, $accent, $daccent);
+    padding: 10px 50px;
+    color: white;
+    font-size: 18px;
+    &:hover {
+      box-shadow: 0px 8px 40px rgba($color: $daccent, $alpha: 0.5);
+    }
+  }
+}
+
+@mixin form {
+  max-width: 500px;
+  margin-left: 80px;
+  display: flex;
+  flex-direction: column;
+
+  button.main {
+    @include btn("main");
+  }
+  .input:last-child {
+    text-align: right;
+  }
+}
+
+@mixin vec {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: fit-content;
+  img {
+    width: 34vw;
+    max-width: 600px;
+  }
+}

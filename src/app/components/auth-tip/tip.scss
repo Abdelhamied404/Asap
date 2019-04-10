@@ -1,0 +1,17 @@
+@import "../../../styles/all.inc.scss";
+
+.tip {
+  p {
+    margin: 80px 0;
+    font-size: 18px;
+    letter-spacing: 4px;
+    color: $gray;
+  }
+
+  a.active.link {
+    color: $daccent;
+    text-transform: uppercase;
+    text-decoration: underline;
+    font-weight: bold;
+  }
+}

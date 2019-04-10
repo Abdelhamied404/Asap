@@ -30,7 +30,8 @@ nav {
             text-decoration: none;
             font-size: 18px;
           }
-          &.active a {
+          &.active a,
+          a.active {
             color: $daccent;
             font-weight: bold;
           }

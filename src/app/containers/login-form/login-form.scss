@@ -1,0 +1,10 @@
+@import "../../../styles/all.inc.scss";
+
+.login-form {
+  form {
+    @include form();
+  }
+  .login-vec {
+    @include vec();
+  }
+}

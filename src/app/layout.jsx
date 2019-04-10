@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Aux from "./containers/hoc";
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, Router } from "react-router-dom";
+import history from "../actions/history";
 
 // pages
 import Dashboard from "./pages/dashboard";
@@ -12,11 +13,13 @@ class Layout extends Component {
   render() {
     return (
       <Aux>
-        <Switch>
-          <Route path="/" exact component={Dashboard} />
-          <Route path="/login" exact component={Login} />
-          <Route path="/signup" exact component={Signup} />
-        </Switch>
+        <Router history={history}>
+          <Switch>
+            <Route path="/" exact component={Dashboard} />
+            <Route path="/login" exact component={Login} />
+            <Route path="/signup" exact component={Signup} />
+          </Switch>
+        </Router>
       </Aux>
     );
   }

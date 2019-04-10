@@ -1,7 +1,8 @@
-import { USER } from "./types";
+import { USER, FORM } from "./types";
 
 import API from "../api";
 import * as cookie from "./utils/cookie";
+import history from "./history";
 
 const Auth = payload => {
   return {
@@ -12,6 +13,13 @@ const Auth = payload => {
 const AuthErr = () => {
   return {
     type: USER.AUTHERR
+  };
+};
+
+const ValidErr = payload => {
+  return {
+    type: FORM.VALIDATE,
+    payload: payload
   };
 };
 
@@ -30,7 +38,7 @@ export const auth = () => {
     //   100,
     //   "/"
     // );
-    const token = "Bearer " + cookie.get("auth");
+    const token = cookie.get("auth");
     const conf = {
       headers: {
         Authorization: token
@@ -52,23 +60,111 @@ export const auth = () => {
 
 export const logout = () => {
   return dispatch => {
-    const token = "Bearer " + cookie.get("auth");
+    const token = cookie.get("auth");
     const conf = {
       headers: {
         Authorization: token
       }
     };
-
     cookie.set("auth", "any", 0, "/");
-    console.log("logged out");
 
     API.get("user/logout", conf)
       .then(res => {
-        let payload = res.data;
-        console.log(payload);
+        // refreshing
+        history.push("/logout");
+        setTimeout(() => {
+          history.replace("/");
+        });
       })
       .catch(err => {
-        console.log(err);
+        console.log(err.response.data);
       });
   };
+};
+
+// signup
+export const signup = user => {
+  let errors = validate(user);
+  if (Object.keys(errors).length === 0) {
+    return dispatch => {
+      API.post("user", user)
+        .then(res => {
+          const payload = res.data;
+
+          const token = payload.user.token_type + " " + payload.user.token;
+          cookie.set("auth", token, 7, "/");
+
+          dispatch(Auth(payload));
+          // redirect back to home
+          history.push("/");
+        })
+        .catch(err => {
+          console.log(err.response.data);
+        });
+    };
+  } else {
+    return dispatch => {
+      dispatch(ValidErr(errors));
+    };
+  }
+};
+
+//login
+export const login = creds => {
+  return dispatch => {
+    let errors = {};
+    // validating
+    if (!creds.email) errors["email"] = "required";
+    if (creds.email && !email(creds.email)) errors["email"] = "email not valid";
+
+    if (Object.keys(errors).length === 0) {
+      // no errors
+      const conf = {
+        params: creds
+      };
+      API.get("user/login", conf)
+        .then(res => {
+          const payload = res.data;
+          const token = payload.user.token_type + " " + payload.user.token;
+          cookie.set("auth", token, 7, "/");
+          dispatch(Auth(payload));
+          // redirect back to home
+          history.push("/");
+        })
+        .catch(err => {
+          console.log(err.response.data);
+        });
+    } else {
+      dispatch(ValidErr(errors));
+    }
+  };
+};
+
+/**
+ *
+ * @param {utils} user
+ */
+const validate = user => {
+  let errors = {};
+
+  //requried
+  if (!user.name) errors["name"] = "required";
+  if (!user.email) errors["email"] = "required";
+  if (!user.password) errors["password"] = "required";
+  if (!user.gender) errors["gender"] = "required";
+
+  // length
+  if (user.name && user.name.length < 3)
+    errors["name"] = "3 characters minimum";
+  if (user.password && user.password.length < 6)
+    errors["password"] = "6 characters minimum";
+
+  // email
+  if (user.email && !email(user.email)) errors["email"] = "not a valid email";
+
+  return errors;
+};
+
+const email = email => {
+  return /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(email);
 };
