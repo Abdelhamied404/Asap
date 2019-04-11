@@ -8,3 +8,11 @@
     @include vec();
   }
 }
+
+@media only screen and (max-width: 900px) {
+  .signup-form {
+    .signup-vec {
+      display: none;
+    }
+  }
+}

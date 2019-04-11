@@ -46,3 +46,15 @@ p[class*="MuiFormHelperText-root"] {
     color: red;
   }
 }
+
+div[class*="MuiPaper-elevation"] {
+  box-shadow: 20px 0px 70px #00000014;
+}
+div[class*="MuiBackdrop-root"] {
+  transition: 200ms all ease-in-out;
+  background-color: #0000001a;
+}
+
+button.small {
+  min-width: auto;
+}

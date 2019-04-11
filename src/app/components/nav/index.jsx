@@ -3,11 +3,13 @@ import "./nav.scss";
 import NavProfile from "../nav-profile";
 import { NavLink } from "react-router-dom";
 import CircularProgress from "@material-ui/core/CircularProgress";
+import Drawer from "../drawer";
 
 const Nav = props => {
   return (
     <nav>
       <div className="nav-bar">
+        <Drawer />
         <div className="logo">
           <NavLink to="/" exact>
             <img

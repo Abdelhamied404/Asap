@@ -8,3 +8,10 @@
     @include vec();
   }
 }
+@media only screen and (max-width: 900px) {
+  .login-form {
+    .login-vec {
+      display: none;
+    }
+  }
+}
