@@ -7,6 +7,9 @@ import history from "../actions/history";
 import Dashboard from "./pages/dashboard";
 import Login from "./pages/login";
 import Signup from "./pages/signup";
+import Community from "./pages/community";
+
+import "./layout.scss";
 
 class Layout extends Component {
   state = {};
@@ -16,8 +19,9 @@ class Layout extends Component {
         <Router history={history}>
           <Switch>
             <Route path="/" exact component={Dashboard} />
-            <Route path="/login" exact component={Login} />
-            <Route path="/signup" exact component={Signup} />
+            <Route path="/login" component={Login} />
+            <Route path="/signup" component={Signup} />
+            <Route path="/community" component={Community} />
           </Switch>
         </Router>
       </Aux>

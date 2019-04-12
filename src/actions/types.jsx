@@ -17,3 +17,13 @@ export const FORM = {
   BLUR: "BLUR",
   VALIDATE: "VALIDATE"
 };
+
+export const POST = {
+  GETPOSTS: "GETPOSTS",
+  LOADERR: "LOADERR"
+};
+
+export const COMMENT = {
+  GETCOMMENT: "GETCOMMENT",
+  LOADERR: "LOADERR"
+};
