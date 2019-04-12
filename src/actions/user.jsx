@@ -48,7 +48,6 @@ export const auth = () => {
     API.get("user", conf)
       .then(res => {
         let payload = res.data;
-        console.log(payload);
         dispatch(Auth(payload));
       })
       .catch(err => {

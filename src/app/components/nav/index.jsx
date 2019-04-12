@@ -20,7 +20,7 @@ const Nav = props => {
         </div>
         <menu>
           <ul>
-            <li className="active">
+            <li>
               <NavLink to="/" exact>
                 Home
               </NavLink>
