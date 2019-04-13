@@ -21,8 +21,8 @@ const Posts = props => {
 };
 
 const list_posts = (list, auth_user) => {
-  return list.map(post => (
-    <Post key={post.id} {...post} auth_user={auth_user} />
+  return list.map((post, i) => (
+    <Post key={post.id} index={i} {...post} auth_user={auth_user} />
   ));
 };
 

@@ -1,0 +1,17 @@
+@import "../../../styles/all.inc.scss";
+
+.comment {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin: 10px 0;
+  padding: 10px 15px;
+  border-radius: 40px;
+  background-color: $vlgray;
+  .avatar {
+    margin-right: 20px;
+    img {
+      max-width: 35px;
+    }
+  }
+}

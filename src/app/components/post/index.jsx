@@ -9,8 +9,22 @@ import {
 } from "@material-ui/icons";
 
 import "./post.scss";
+import Comments from "../../containers/comments";
+import NewPost from "./new-post";
 
 const Post = props => {
+  return props.new ? newpost(props) : post(props);
+};
+
+const newpost = props => {
+  return (
+    <div className="post">
+      <NewPost {...props} />
+    </div>
+  );
+};
+
+const post = props => {
   return (
     <div className="post flex">
       <div className="post-wrapper flex">
@@ -54,7 +68,9 @@ const Post = props => {
           </div>
         </div>
       </div>
-      <div className="comment-wrapper">comments goes here</div>
+      <div className="comment-wrapper">
+        <Comments post_id={props.index} />
+      </div>
     </div>
   );
 };

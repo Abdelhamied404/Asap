@@ -23,7 +23,7 @@ export const getPosts = () => {
       })
       .catch(err => {
         dispatch(LoadErr());
-        console.log(err.response.data);
+        console.log(err);
       });
   };
 };

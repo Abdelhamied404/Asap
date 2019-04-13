@@ -9,6 +9,7 @@ const PasswordField = props => {
   return (
     <div className="input">
       <TextInput
+        className={props.naked ? "naked" : null}
         fullWidth
         variant="filled"
         type={props.showPassword ? "text" : "password"}

@@ -6,6 +6,7 @@ const EmailField = props => {
   return (
     <div className="input">
       <TextInput
+        className={props.naked ? "naked" : null}
         fullWidth
         onBlur={props.handleBlur}
         label={props.name}

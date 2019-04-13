@@ -1,3 +1,5 @@
+@import "../all.inc.scss";
+
 // custom material ui
 li.popup-menu-item {
   width: 130px;
@@ -57,4 +59,12 @@ div[class*="MuiBackdrop-root"] {
 
 button.small {
   min-width: auto;
+}
+
+.naked [class*="MuiFilledInput-root"] {
+  background: none;
+  &:hover,
+  &:focus {
+    background: $vlgray;
+  }
 }

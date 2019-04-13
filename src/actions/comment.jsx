@@ -3,8 +3,8 @@ import API from "../api";
 
 const Load = payload => {
   return {
-    payload: payload,
-    type: COMMENT.GETCOMMENTS
+    type: COMMENT.GETCOMMENTS,
+    payload: payload
   };
 };
 
@@ -24,12 +24,10 @@ export const getComments = post_id => {
     API.get("comment", conf)
       .then(res => {
         let payload = res.data;
-        console.log("comment", payload);
         dispatch(Load(payload));
       })
       .catch(err => {
         dispatch(LoadErr());
-        console.log("comment", err);
       });
   };
 };

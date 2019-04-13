@@ -24,6 +24,6 @@ export const POST = {
 };
 
 export const COMMENT = {
-  GETCOMMENT: "GETCOMMENT",
+  GETCOMMENTS: "GETCOMMENTS",
   LOADERR: "LOADERR"
 };

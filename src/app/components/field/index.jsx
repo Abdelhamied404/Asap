@@ -54,6 +54,9 @@ class Field extends Component {
       case "dropdown":
         return <DropDown {...attr} />;
 
+      case "textarea":
+        return <TextField multiline {...attr} />;
+
       // usual text field by default
       default:
         return <TextField {...attr} />;

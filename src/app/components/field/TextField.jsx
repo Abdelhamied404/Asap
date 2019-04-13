@@ -6,6 +6,8 @@ const TextField = props => {
   return (
     <div className="input">
       <TextInput
+        className={props.naked ? "naked" : null}
+        multiline={props.multiline}
         fullWidth
         onBlur={props.handleBlur}
         label={props.name}
