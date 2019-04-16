@@ -62,9 +62,17 @@ button.small {
 }
 
 .naked [class*="MuiFilledInput-root"] {
-  background: none;
+  background: $vlgray;
   &:hover,
   &:focus {
     background: $vlgray;
+  }
+}
+
+div[class*="MuiPrivateTextarea-root"] {
+  height: 150px;
+  overflow: auto;
+  textarea {
+    height: 100%;
   }
 }

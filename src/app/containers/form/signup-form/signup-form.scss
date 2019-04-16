@@ -1,16 +1,17 @@
-@import "../../../styles/all.inc.scss";
+@import "../../../../styles/all.inc.scss";
 
-.login-form {
+.signup-form {
   form {
     @include form();
   }
-  .login-vec {
+  .signup-vec {
     @include vec();
   }
 }
+
 @media only screen and (max-width: 900px) {
-  .login-form {
-    .login-vec {
+  .signup-form {
+    .signup-vec {
       display: none;
     }
   }

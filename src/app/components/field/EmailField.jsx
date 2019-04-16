@@ -6,12 +6,12 @@ const EmailField = props => {
   return (
     <div className="input">
       <TextInput
+        {...props.input}
         className={props.naked ? "naked" : null}
         fullWidth
         onBlur={props.handleBlur}
-        label={props.name}
+        label={props.label}
         type="email"
-        name={props.name}
         autoComplete="email"
         variant="filled"
         helperText={<span className="error">{props.errors[props.name]}</span>}

@@ -6,14 +6,7 @@ import Select from "@material-ui/core/Select";
 import { FormHelperText } from "@material-ui/core";
 
 class SimpleSelect extends React.Component {
-  state = {
-    gender: ""
-  };
-
-  handleChange = event => {
-    this.props.handleBlur(event);
-    this.setState({ [event.target.name]: event.target.value });
-  };
+  state = {};
 
   render() {
     return (
@@ -21,8 +14,10 @@ class SimpleSelect extends React.Component {
         <FormControl fullWidth variant="filled">
           <InputLabel>gender</InputLabel>
           <Select
-            value={this.state.gender}
-            onChange={this.handleChange}
+            {...this.props.input}
+            onChange={event => {
+              this.props.input.onChange(event.target.value);
+            }}
             input={<FilledInput fullWidth name="gender" />}
           >
             {this.props.children}

@@ -18,6 +18,7 @@ const CheckBox = props => {
         <FormControlLabel
           control={
             <Checkbox
+              onChange={props.input.onChange}
               checked={props.checked}
               onBlur={props.handleBlur}
               value={props.remember}

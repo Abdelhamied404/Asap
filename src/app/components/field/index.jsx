@@ -1,7 +1,4 @@
 import React, { Component } from "react";
-import { connect } from "react-redux";
-
-import { OnBlur } from "../../../actions/auth_user";
 
 import TextField from "./TextField";
 import EmailField from "./EmailField";
@@ -19,17 +16,10 @@ class Field extends Component {
       showPassword: false
     },
     methods: {
-      handleBlur: e => this.handleBlur(e),
       handleShowPassword: () => this.handleShowPassword()
     }
   };
 
-  handleBlur = e => {
-    let val = e.target.value;
-    // check if it was checkbox
-    if (e.target.type === "checkbox") val = e.target.checked;
-    this.props.OnBlur({ [e.target.name]: val });
-  };
   handleShowPassword = () => {
     this.setState({ meta: { showPassword: !this.state.meta.showPassword } });
   };
@@ -39,7 +29,7 @@ class Field extends Component {
       ...this.props,
       ...this.state.meta,
       ...this.state.methods,
-      errors: this.props.auth_user.errors
+      errors: {}
     };
 
     switch (this.props.type) {
@@ -64,14 +54,4 @@ class Field extends Component {
   }
 }
 
-const mapStateToProps = ({ auth_user }) => ({ auth_user });
-const mapDispatchToProps = dispatch => {
-  return {
-    OnBlur: data => dispatch(OnBlur(data))
-  };
-};
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Field);
+export default Field;

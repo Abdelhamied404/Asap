@@ -9,12 +9,12 @@ const PasswordField = props => {
   return (
     <div className="input">
       <TextInput
+        {...props.input}
         className={props.naked ? "naked" : null}
         fullWidth
         variant="filled"
         type={props.showPassword ? "text" : "password"}
-        label={props.name}
-        name={props.name}
+        label={props.label}
         onBlur={props.handleBlur}
         helperText={<span className="error">{props.errors[props.name]}</span>}
         InputProps={{

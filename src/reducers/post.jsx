@@ -17,9 +17,9 @@ export default (state = INITIAL_STATE, action) => {
     case POST.LOADERR:
       return {
         ...state,
-        ...action.payload,
         loaded: -1
       };
+
     default:
       return state;
   }
