@@ -6,6 +6,7 @@ import { auth } from "../../../actions/user";
 import "./community.scss";
 import Posts from "../../containers/posts";
 import Post from "../../components/post";
+import NotAuth from "../../components/post/not-auth";
 
 class Community extends Component {
   state = {};
@@ -19,7 +20,11 @@ class Community extends Component {
       <div className="page">
         <div className="community">
           <Nav profile isAuth={this.props.isAuth} user={this.props.user} />
-          <Post new />
+          {this.props.isAuth === 1 ? (
+            <Post new />
+          ) : this.props.isAuth === -1 ? (
+            <NotAuth />
+          ) : null}
           <Posts />
         </div>
       </div>

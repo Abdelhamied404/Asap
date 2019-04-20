@@ -20,6 +20,7 @@ export const FORM = {
 
 export const POST = {
   GETPOSTS: "GETPOSTS",
+  ADDPOST: "ADDPOST",
   LOADERR: "LOADERR"
 };
 
