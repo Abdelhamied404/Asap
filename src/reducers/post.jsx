@@ -44,11 +44,17 @@ export default (state = INITIAL_STATE, action) => {
       };
 
     case POST.VOTE:
-      var post = action.payload.post;
-      var id = post.id - 1;
+      var new_post = action.payload.post;
 
+      post_id = new_post.id;
       data = state.posts.data;
-      data[id] = post;
+
+      data.forEach((post, i) => {
+        if (post.id === post_id) {
+          console.log("equal");
+          data[i] = new_post;
+        }
+      });
 
       return {
         ...state,
