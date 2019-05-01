@@ -11,7 +11,7 @@ const Posts = props => {
 
   return (
     <div className="posts">
-      {props.loaded === 1 ? (
+      {props.posts.data && props.loaded === 1 ? (
         list_posts(props.posts.data, props.user)
       ) : (
         <CircularProgress />

@@ -1,4 +1,4 @@
-import { POST } from "../actions/types";
+import { POST, COMMENT } from "../actions/types";
 
 const INITIAL_STATE = {
   posts: {
@@ -17,17 +17,44 @@ export default (state = INITIAL_STATE, action) => {
       };
 
     case POST.ADDPOST:
-      let posts = { ...state.posts };
+      var posts = { ...state.posts };
       posts.data.unshift(action.payload.post);
-      console.log("reducer", {
-        ...state,
-        posts: posts,
-        loaded: 1
-      });
       return {
         ...state,
         posts: posts,
         loaded: 1
+      };
+
+    case COMMENT.NEWCOMMENT:
+      var newComment = action.payload;
+      var post_id = newComment.post_id;
+
+      var data = state.posts.data;
+      data.forEach(post => {
+        if (post.id === post_id) {
+          post.comments.unshift(newComment);
+        }
+      });
+
+      return {
+        ...state,
+        posts: {
+          data: data
+        }
+      };
+
+    case POST.VOTE:
+      var post = action.payload.post;
+      var id = post.id - 1;
+
+      data = state.posts.data;
+      data[id] = post;
+
+      return {
+        ...state,
+        posts: {
+          data: data
+        }
       };
 
     case POST.LOADERR:

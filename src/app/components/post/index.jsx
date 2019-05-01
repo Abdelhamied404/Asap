@@ -1,16 +1,19 @@
 import React from "react";
-import { Chip, Avatar } from "@material-ui/core";
+import { Chip, Avatar, Fab } from "@material-ui/core";
 import {
   Done,
   MyLocationTwoTone,
   KeyboardArrowUpRounded,
-  KeyboardArrowDownRounded,
-  ExpandMoreRounded
+  KeyboardArrowDownRounded
 } from "@material-ui/icons";
 
 import "./post.scss";
 import Comments from "../../containers/comments";
 import NewPost from "./new-post";
+
+import { connect } from "react-redux";
+import { upVote, downVote } from "../../../actions/post";
+import PostOptions from "./options";
 
 const Post = props => {
   return props.new ? newpost(props) : post(props);
@@ -24,21 +27,40 @@ const newpost = props => {
   );
 };
 
+const Actions = props => {
+  let upClass = "naked",
+    downClass = "naked";
+
+  if (props.voted === 1) {
+    upClass += " voted";
+  } else if (props.voted === -1) {
+    downClass += " voted";
+  }
+
+  return (
+    <div className="actions flex">
+      <div className="up-vote">
+        <Fab className={upClass} onClick={() => props.upVote(props.id)}>
+          <KeyboardArrowUpRounded />
+        </Fab>
+      </div>
+      <div className="votes">
+        <p>{props.vote ? props.vote : 0}</p>
+      </div>
+      <div className="down-vote">
+        <Fab className={downClass} onClick={() => props.downVote(props.id)}>
+          <KeyboardArrowDownRounded />
+        </Fab>
+      </div>
+    </div>
+  );
+};
+
 const post = props => {
   return (
     <div className="post flex">
       <div className="post-wrapper flex">
-        <div className="actions flex">
-          <div className="up-vote">
-            <KeyboardArrowUpRounded />
-          </div>
-          <div className="votes">
-            <p>{props.votes ? props.votes : 0}</p>
-          </div>
-          <div className="down-vote">
-            <KeyboardArrowDownRounded />
-          </div>
-        </div>
+        {props.auth_user.isAuth === 1 ? Actions(props) : null}
         <div className="wrapper">
           <div className="header flex">
             <div className="user-profile flex">
@@ -54,7 +76,7 @@ const post = props => {
               </div>
             </div>
             <div className="options">
-              <ExpandMoreRounded />
+              <PostOptions />
             </div>
           </div>
           <div className="content">
@@ -90,4 +112,15 @@ const list_tags = tags =>
     </div>
   ));
 
-export default Post;
+const mapStateToProps = ({ post }) => ({ ...post });
+const mapDispatchToProps = dispatch => {
+  return {
+    upVote: id => dispatch(upVote(id)),
+    downVote: id => dispatch(downVote(id))
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Post);

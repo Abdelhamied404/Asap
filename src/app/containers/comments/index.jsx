@@ -6,6 +6,7 @@ import Comment from "../../components/comment";
 const Comments = props => {
   return (
     <div className="comments">
+      <Comment new user={props.user} post_id={props.post_id} />
       {props.loaded === 1
         ? list_comments(props.posts.data, props.post_id)
         : "loading"}
@@ -18,7 +19,7 @@ const list_comments = (list, post_id) => {
   return comments.map((comment, i) => <Comment key={i} {...comment} />);
 };
 
-const mapStateToProps = ({ post }) => ({ ...post });
+const mapStateToProps = ({ post, user }) => ({ ...post, ...user });
 
 export default connect(
   mapStateToProps,

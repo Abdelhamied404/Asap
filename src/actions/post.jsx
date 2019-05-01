@@ -1,7 +1,6 @@
 import { POST } from "./types";
 import API from "../api";
 import * as cookie from "./utils/cookie";
-import { pusher, echo } from "../api/pusher";
 
 const Load = payload => {
   return {
@@ -23,10 +22,25 @@ const LoadErr = () => {
   };
 };
 
+const vote = (payload, voted) => {
+  return {
+    type: POST.VOTE,
+    payload: payload,
+    voted: voted
+  };
+};
+
 export const getPosts = () => {
   return dispatch => {
+    const token = cookie.get("auth");
+    const conf = {
+      headers: {
+        Authorization: token
+      }
+    };
+
     // Api fallback
-    API.get("post")
+    API.get("post", conf)
       .then(res => {
         const payload = res.data;
         dispatch(Load(payload));
@@ -35,13 +49,6 @@ export const getPosts = () => {
         console.log(err);
         dispatch(LoadErr());
       });
-
-    // pusher brodcast
-    let channel = pusher.subscribe("posts");
-    channel.bind("App\\Events\\NewPostsCast", post => {
-      console.log("pusherSUB::: ", post);
-      dispatch(addPost(post));
-    });
   };
 };
 
@@ -56,11 +63,47 @@ export const createPost = post => {
 
     API.post("post", post, conf)
       .then(res => {
-        // pusher brodcast
-        pusher.subscribe("posts");
+        dispatch(addPost(res.data));
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
+};
+
+export const upVote = id => {
+  return dispatch => {
+    const token = cookie.get("auth");
+    const conf = {
+      headers: {
+        Authorization: token
+      }
+    };
+
+    API.get("post/" + id + "/up", conf)
+      .then(res => {
+        dispatch(vote(res.data, 1));
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
+};
+export const downVote = id => {
+  return dispatch => {
+    const token = cookie.get("auth");
+    const conf = {
+      headers: {
+        Authorization: token
+      }
+    };
+
+    API.get("post/" + id + "/down", conf)
+      .then(res => {
+        dispatch(vote(res.data, -1));
         console.log(res.data);
       })
-      .then(err => {
+      .catch(err => {
         console.log(err);
       });
   };

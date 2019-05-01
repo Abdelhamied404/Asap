@@ -21,10 +21,12 @@ export const FORM = {
 export const POST = {
   GETPOSTS: "GETPOSTS",
   ADDPOST: "ADDPOST",
-  LOADERR: "LOADERR"
+  LOADERR: "LOADERR",
+  VOTE: "VOTE"
 };
 
 export const COMMENT = {
   GETCOMMENTS: "GETCOMMENTS",
+  NEWCOMMENT: "NEWCOMMENT",
   LOADERR: "LOADERR"
 };

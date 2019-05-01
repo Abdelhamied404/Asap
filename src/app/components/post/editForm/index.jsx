@@ -1,17 +1,20 @@
 import React, { Component } from "react";
-import { MyLocationTwoTone } from "@material-ui/icons";
-import { connect } from "react-redux";
-
-import { Field, reduxForm } from "redux-form";
+import {
+  Button,
+  Dialog,
+  DialogTitle,
+  DialogActions,
+  DialogContent,
+  MenuItem,
+  Chip
+} from "@material-ui/core";
 
 import Input from "../../field";
-import { Button, Chip } from "@material-ui/core";
+import { Field, reduxForm } from "redux-form";
 
-import "./new-post.scss";
-import { createPost } from "../../../../actions/post";
-
-class NewPost extends Component {
+class PostEditForm extends Component {
   state = {
+    open: false,
     new_tags: [],
     current_tag: ""
   };
@@ -36,27 +39,39 @@ class NewPost extends Component {
     this.setState({ new_tags: new_tags });
   };
 
+  handleClickOpen = () => {
+    this.setState({ open: true });
+  };
+
+  handleClose = () => {
+    this.setState({ open: false });
+    this.props.handleClose();
+  };
+
   render() {
+    const { fullScreen } = this.props;
     return (
-      <div className="new-post">
-        <div className="wrapper">
-          <div className="header flex">
-            <div className="user-profile flex">
-              <div className="avatar">
-                <img src={this.props.user.avatar} alt={this.props.user.name} />
-              </div>
-              <div className="profile">
-                <div className="name">{this.props.user.name}</div>
-                <div className="country flex">
-                  <MyLocationTwoTone />
-                  <p>
-                    {this.props.user.country ? this.props.user.country : "none"}
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="content">
+      <div>
+        {/* button */}
+        <MenuItem
+          onClick={() => {
+            this.handleClickOpen();
+          }}
+        >
+          Edit
+        </MenuItem>
+
+        {/* dialog */}
+        <Dialog
+          fullWidth={true}
+          fullScreen={fullScreen}
+          open={this.state.open}
+          onClose={this.handleClose}
+          aria-labelledby="responsive-dialog-title"
+        >
+          <DialogTitle id="responsive-dialog-title">Edit the post</DialogTitle>
+          <DialogContent>
+            {/* form */}
             <div className="title">
               <Field naked label="title" name="title" component={Input} />
             </div>
@@ -93,42 +108,21 @@ class NewPost extends Component {
                 ))}
               </div>
             </div>
-          </div>
-          <div className="post-btn">
-            <Button
-              className="main"
-              onClick={() => {
-                const t = {
-                  ...this.props.new_post.values,
-                  tags: JSON.stringify(this.state.new_tags)
-                };
-                this.props.createPost(t);
-              }}
-            >
-              Post
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={this.handleClose} color="primary">
+              Edit
             </Button>
-          </div>
-        </div>
+            <Button onClick={this.handleClose} autoFocus>
+              Cancel
+            </Button>
+          </DialogActions>
+        </Dialog>
       </div>
     );
   }
 }
 
-const mapStateToProps = ({ user, form }) => ({
-  ...user,
-  new_post: { ...form.new_post }
-});
-const mapDispatchToProps = dispatch => {
-  return {
-    createPost: post => dispatch(createPost(post))
-  };
-};
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(
-  reduxForm({
-    form: "new_post" // a unique identifier for this form
-  })(NewPost)
-);
+export default reduxForm({
+  form: "new_post" // a unique identifier for this form
+})(PostEditForm);

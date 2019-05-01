@@ -8,6 +8,7 @@ import Dashboard from "./pages/dashboard";
 import Login from "./pages/login";
 import Signup from "./pages/signup";
 import Community from "./pages/community";
+import Reserve from "./pages/reserve";
 
 import "./layout.scss";
 
@@ -22,6 +23,7 @@ class Layout extends Component {
             <Route path="/login" component={Login} />
             <Route path="/signup" component={Signup} />
             <Route path="/community" component={Community} />
+            <Route path="/reserve" component={Reserve} />
           </Switch>
         </Router>
       </Aux>

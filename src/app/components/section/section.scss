@@ -1,5 +1,5 @@
 .section {
-  flex-basis: 33%;
+  width: 100%;
   display: flex;
   flex-direction: column;
 
@@ -17,6 +17,7 @@
 .section-link {
   position: relative;
   transition: all 200ms ease-in-out;
+  flex-basis: 20%;
 }
 .section-link:hover {
   transform: scale(1.15);

@@ -29,7 +29,7 @@ const Nav = props => {
               <NavLink to="/community">community</NavLink>
             </li>
             <li>
-              <NavLink to="/Reserve">Reserve</NavLink>
+              <NavLink to="/reserve">Reserve</NavLink>
             </li>
             <li>
               <NavLink to="/find">find</NavLink>
