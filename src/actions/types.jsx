@@ -30,3 +30,8 @@ export const COMMENT = {
   NEWCOMMENT: "NEWCOMMENT",
   LOADERR: "LOADERR"
 };
+
+export const CHAT = {
+  GETALLCHATS: "GETALLCHATS",
+  LOADERR: "LOADERR"
+};

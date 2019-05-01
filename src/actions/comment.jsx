@@ -43,12 +43,11 @@ export const getComments = post_id => {
 
 export const makeComment = (post_id, body) => {
   return dispatch => {
-    const token = cookie.get("auth");
     let comment = {
       post_id: post_id,
       body: body
     };
-    console.log(comment);
+    const token = cookie.get("auth");
     let conf = {
       headers: {
         Authorization: token

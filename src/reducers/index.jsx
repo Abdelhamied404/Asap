@@ -4,6 +4,7 @@ import doctor from "./doctor";
 import section from "./section";
 import post from "./post";
 import comment from "./comment";
+import chat from "./chat";
 import { reducer as reduxFormReducer } from "redux-form";
 
 const root = combineReducers({
@@ -12,7 +13,8 @@ const root = combineReducers({
   doctor: doctor,
   section: section,
   post: post,
-  comment: comment
+  comment: comment,
+  chat: chat
 });
 
 export default root;
