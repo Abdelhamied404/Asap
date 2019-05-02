@@ -10,11 +10,11 @@ const Load = payload => {
   };
 };
 
-const LoadErr = () => {
-  return {
-    type: CHAT.LOADERR
-  };
-};
+// const LoadErr = () => {
+//   return {
+//     type: CHAT.LOADERR
+//   };
+// };
 
 export const getAllChats = () => {
   return dispatch => {
