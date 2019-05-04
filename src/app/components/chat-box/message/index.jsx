@@ -4,7 +4,6 @@ import { connect } from "react-redux";
 import "./message.scss";
 
 const Message = props => {
-  console.log("chat", props);
   let me = props.auth_user.user.id === props.user_id;
 
   let rec_avatar = null;
