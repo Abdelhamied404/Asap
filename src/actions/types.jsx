@@ -33,5 +33,6 @@ export const COMMENT = {
 
 export const CHAT = {
   GETALLCHATS: "GETALLCHATS",
+  SEND: "SEND",
   LOADERR: "LOADERR"
 };

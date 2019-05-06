@@ -8,6 +8,12 @@ import { Provider } from "react-redux";
 import thunk from "redux-thunk";
 import reducer from "./reducers";
 
+import Pusher from "pusher-js";
+
+// pusher
+Pusher.logToConsole = true;
+
+// redux
 const store = createStore(reducer, applyMiddleware(thunk));
 
 ReactDOM.render(

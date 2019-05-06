@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
-import Chat from "../../components/chat";
-
 import { connect } from "react-redux";
+
+import Chat from "../../components/chat";
 import { getAllChats } from "../../../actions/chat";
 import { CircularProgress } from "@material-ui/core";
 

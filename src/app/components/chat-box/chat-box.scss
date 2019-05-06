@@ -78,6 +78,12 @@
     box-shadow: 0px -20px 20px -25px #0000003b;
     border-top: 2px lightgray solid;
     padding: 5px 20px;
+
+    .avatar,
+    .msg-input {
+      margin: 0 10px;
+    }
+
     .avatar {
       img {
         max-width: 40px;

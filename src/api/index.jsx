@@ -1,8 +1,8 @@
 import axios from "axios";
 
 const defaults = {
-  baseURL: "http://healthqo.api/api/",
-  // baseURL: "https://safe-basin-29570.herokuapp.com/api/",
+  // baseURL: "http://healthqo.api/api/",
+  baseURL: "https://asap-api.herokuapp.com/api/",
   headers: {
     Accept: "application/json",
     "Content-Type": "application/json",
