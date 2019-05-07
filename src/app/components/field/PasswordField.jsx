@@ -18,6 +18,7 @@ const PasswordField = props => {
         onBlur={props.handleBlur}
         helperText={<span className="error">{props.errors[props.name]}</span>}
         InputProps={{
+          disableUnderline: true,
           endAdornment: (
             <InputAdornment position="end">
               <IconButton onClick={props.handleShowPassword}>

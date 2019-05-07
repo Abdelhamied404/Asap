@@ -1,13 +1,5 @@
 @import "../all.inc.scss";
 
-// custom material ui
-li.popup-menu-item {
-  width: 130px;
-}
-div[class*="MuiPaper-elevation8"] {
-  box-shadow: 0px 12px 20px #00000014;
-}
-
 // custom react-router link
 #popup-menu {
   *:focus {
@@ -29,57 +21,13 @@ button {
   }
 }
 
-div[class*="MuiFilledInput-adornedEnd"] {
-  padding-right: 0;
-}
-
-div[class*="MuiFilledInput-underline"]:after,
-div[class*="MuiInput-underline"]:after,
-div[class*="MuiFilledInput-underline"]:before,
-div[class*="MuiInput-underline"]:before,
-div[class*="MuiFilledInput-underline"]:hover:not(.MuiFilledInput-disabled-366):not(.MuiFilledInput-focused-365):not(.MuiFilledInput-error-369):before,
-div[class*="MuiInput-underline"]:hover:not(.MuiInput-underline-disabled-366):not(.MuiInput-underline-focused-365):not(.MuiInput-underline-error-369):before {
-  border-bottom: 0;
-}
-
-p[class*="MuiFormHelperText-root"] {
-  margin: 0;
-  min-height: 0;
-  span.error {
-    display: block;
-    margin: 5px;
-    color: red;
-  }
-}
-
-div[class*="MuiPaper-elevation"] {
-  box-shadow: 20px 0px 70px #00000014;
-}
-div[class*="MuiBackdrop-root"] {
-  transition: 200ms all ease-in-out;
-  background-color: #0000001a;
+// custom material ui
+li.popup-menu-item {
+  width: 130px;
 }
 
 button.small {
   min-width: auto;
-}
-
-.naked [class*="MuiFilledInput-root"] {
-  background: $vlgray;
-  border-bottom: none;
-  &:hover,
-  &:focus {
-    border-bottom: none;
-    background: $vlgray;
-  }
-}
-
-div[class*="MuiPrivateTextarea-root"] {
-  height: 150px;
-  overflow: auto;
-  textarea {
-    height: 100%;
-  }
 }
 
 button.naked {

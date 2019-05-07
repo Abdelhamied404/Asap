@@ -15,6 +15,7 @@ const EmailField = props => {
         autoComplete="email"
         variant="filled"
         helperText={<span className="error">{props.errors[props.name]}</span>}
+        InputProps={{ disableUnderline: true }}
       />
     </div>
   );

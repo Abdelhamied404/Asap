@@ -12,6 +12,7 @@ const TextField = props => {
           className={props.naled ? "naked" : null}
           placeholder={props.label}
           fullWidth
+          InputProps={{ disableUnderline: true }}
         />
       ) : (
         <TextInput
@@ -25,6 +26,7 @@ const TextField = props => {
           label={props.label}
           variant="filled"
           helperText={<span className="error">{props.errors[props.name]}</span>}
+          InputProps={{ disableUnderline: true }}
         />
       )}
     </div>

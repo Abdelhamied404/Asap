@@ -14,6 +14,7 @@ class SimpleSelect extends React.Component {
         <FormControl fullWidth variant="filled">
           <InputLabel>gender</InputLabel>
           <Select
+            disableUnderline
             {...this.props.input}
             onChange={event => {
               this.props.input.onChange(event.target.value);
