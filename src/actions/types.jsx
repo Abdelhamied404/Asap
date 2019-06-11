@@ -10,6 +10,7 @@ export const DOCTOR = {
 
 export const SECTION = {
   GETSECTIONS: "GETSECTIONS",
+  LOADDOCTORS: "LOADDOCTORS",
   LOADERR: "LOADERR"
 };
 
