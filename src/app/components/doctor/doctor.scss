@@ -19,6 +19,14 @@
 .doctor-link {
   position: relative;
   transition: all 200ms ease-in-out;
+
+  &.wide{
+    margin: 0 40px;
+    min-width: 20%;
+    .doctor{
+      margin: auto;
+    }
+  }
 }
 .doctor-link:hover {
   transform: scale(1.15);

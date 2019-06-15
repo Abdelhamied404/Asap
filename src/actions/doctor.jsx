@@ -19,7 +19,7 @@ export const getRecommended = () => {
     API.get("doctor/recommended")
       .then(res => {
         let payload = res.data;
-        console.log(res.data);
+        console.log(payload);
         dispatch(Load(DOCTOR.RECOMMENDED, payload));
       })
       .catch(err => {

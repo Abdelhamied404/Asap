@@ -4,51 +4,61 @@ import { connect } from "react-redux";
 import { auth } from "../../../actions/user";
 import { Button } from "@material-ui/core";
 import { ArrowBackRounded } from "@material-ui/icons";
-import { getDoctors } from "../../../actions/section";
+import { getSections } from "../../../actions/section";
 import Doctors from "../../containers/doctors";
+
+import "./speciality.scss";
 
 class Speciality extends Component {
   state = {
-    section_id: this.props.match.params.id
+    name: this.props.match.params.name
   };
 
   componentDidMount() {
     this.props.auth();
-    this.props.getDoctors(this.props.match.params.id);
+    this.props.getSections();
+    console.log("state", this.state);
+    console.log("props", this.props);
   }
 
   render() {
+    let doctors = null;
+    let wrongSection = false;
+    if (this.props.section.loaded === 1) {
+      this.props.section.sections.data.forEach(section => {
+        if (section.name === this.state.name) {
+          doctors = section.doctors;
+        }
+      });
+      if (!doctors) {
+        wrongSection = true;
+      }
+    }
     return (
       <div className="page">
         <div className="speciality">
           <Nav profile isAuth={this.props.isAuth} user={this.props.user} />
           <div className="header">
             <Button>
-              <ArrowBackRounded />
+              <ArrowBackRounded onClick={this.props.history.goBack} />
             </Button>
             <div className="title">
-              <p>{this.state.section_id}</p>
+              <p>{this.state.name}</p>
             </div>
           </div>
           <div className="content">
-            <Doctors
-              doctors={
-                this.props.loaded === 1
-                  ? this.props.sections[this.state.section_id - 1].doctors
-                  : null
-              }
-            />
+            <Doctors doctors={doctors} isErr={wrongSection} />
           </div>
         </div>
       </div>
     );
   }
 }
-const mapStateToProps = ({ user, section }) => ({ ...user, ...section });
+const mapStateToProps = ({ user, section }) => ({ ...user, section });
 const mapDispatchToProps = dispatch => {
   return {
     auth: () => dispatch(auth()),
-    getDoctors: id => dispatch(getDoctors(id))
+    getSections: () => dispatch(getSections())
   };
 };
 export default connect(

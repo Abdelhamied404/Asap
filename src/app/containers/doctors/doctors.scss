@@ -1,0 +1,25 @@
+@import "../../../styles/all.inc.scss";
+
+.doctors {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: left;
+
+
+  .error {
+    min-height: 300px;
+    text-align: center;
+    width: 100%;
+    display: flex;
+
+    .msg {
+      margin: auto;
+    }
+
+    p {
+      font-size: 36px;
+      color: $err;
+      font-weight: bold;
+    }
+  }
+}

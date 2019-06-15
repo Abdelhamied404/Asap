@@ -1,0 +1,18 @@
+.page{
+    .speciality{
+        .header{
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+
+            .title{
+                p{
+                    text-transform: capitalize;
+                }
+            }
+        }
+        .content{
+            margin: 50px 0;
+        }
+    }
+}

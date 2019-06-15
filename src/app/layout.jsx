@@ -24,8 +24,8 @@ class Layout extends Component {
             <Route path="/login" component={Login} />
             <Route path="/signup" component={Signup} />
             <Route path="/community" component={Community} />
-            <Route path="/reserve" component={Reserve} />
-            <Route path="/speciality/:id" component={Speciality} />
+            <Route path="/reserve" exact component={Reserve} />
+            <Route path="/reserve/:name" component={Speciality} />
           </Switch>
         </Router>
       </Aux>

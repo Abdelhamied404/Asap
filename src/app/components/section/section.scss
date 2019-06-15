@@ -1,9 +1,9 @@
 .section {
-  width: 100%;
+  width: 70%;
+  display: -webkit-flex;
   display: flex;
   flex-direction: column;
-
-  margin: 50px 0;
+  margin: 50px auto;
 
   img {
     border-radius: 10px;
@@ -17,7 +17,8 @@
 .section-link {
   position: relative;
   transition: all 200ms ease-in-out;
-  flex-basis: 20%;
+  flex-basis: 26%;
+  margin: 15px 0;
 }
 .section-link:hover {
   transform: scale(1.15);

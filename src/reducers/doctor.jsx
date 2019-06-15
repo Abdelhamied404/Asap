@@ -10,7 +10,7 @@ export default (state = INITIAL_STATE, action) => {
     case DOCTOR.RECOMMENDED:
       return {
         ...state,
-        recommended: { ...action.payload },
+        recommended: { ...action.payload.doctors },
         loaded: 1
       };
 
