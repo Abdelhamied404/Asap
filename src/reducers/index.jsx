@@ -5,6 +5,7 @@ import section from "./section";
 import post from "./post";
 import comment from "./comment";
 import chat from "./chat";
+import profile from "./profile";
 import { reducer as reduxFormReducer } from "redux-form";
 
 const root = combineReducers({
@@ -14,7 +15,8 @@ const root = combineReducers({
   section: section,
   post: post,
   comment: comment,
-  chat: chat
+  chat: chat,
+  profile: profile
 });
 
 export default root;

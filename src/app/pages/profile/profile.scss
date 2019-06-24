@@ -1,0 +1,32 @@
+@import "../../../styles/all.inc.scss";
+
+.profile {
+    .about {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+
+        .description,
+        .feedback {
+            margin: 0 auto;
+        }
+
+        .feedback {
+            p {
+                color: $daccent;
+            }
+        }
+    }
+
+    .actions {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-top: 50px;
+
+        .chat-btn,
+        .reserve-btn {
+            margin: 0 40px;
+        }
+    }
+}

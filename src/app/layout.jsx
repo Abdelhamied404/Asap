@@ -10,6 +10,7 @@ import Signup from "./pages/signup";
 import Community from "./pages/community";
 import Reserve from "./pages/reserve";
 import Speciality from "./pages/speciality";
+import Profile from "./pages/profile";
 
 import "./layout.scss";
 
@@ -26,6 +27,8 @@ class Layout extends Component {
             <Route path="/community" component={Community} />
             <Route path="/reserve" exact component={Reserve} />
             <Route path="/reserve/:name" component={Speciality} />
+            <Route path="/profile" exact component={Profile} />
+            <Route path="/user/:name" component={Profile} />
           </Switch>
         </Router>
       </Aux>

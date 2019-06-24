@@ -37,3 +37,8 @@ export const CHAT = {
   SEND: "SEND",
   LOADERR: "LOADERR"
 };
+
+export const PROFILE = {
+  GET: "GET",
+  LOADERR: "LOADERR"
+};

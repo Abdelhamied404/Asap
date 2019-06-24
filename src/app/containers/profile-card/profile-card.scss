@@ -1,0 +1,47 @@
+@import "../../../styles/all.inc.scss";
+
+.profile-card {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 50px 0 30px 20px;
+
+    .profile-pic {
+        margin-right: 50px;
+    }
+
+    .info {
+        margin-top: 10px;
+
+        .name,
+        .country,
+        .speciality {
+            margin: 5px 0;
+        }
+
+        .name {
+            font-size: 24px;
+            font-weight: 400;
+        }
+
+        .country,
+        .speciality {
+            color: $gray;
+
+            display: flex;
+
+            span {
+                margin-right: 5px;
+
+                img {
+                    width: 20px;
+                }
+            }
+
+        }
+
+        .rate {
+            margin-top: 10px;
+        }
+
+    }
+}

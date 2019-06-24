@@ -3,3 +3,7 @@
 button.main {
   @include btn("main");
 }
+
+button.sec {
+  @include btn("sec");
+}

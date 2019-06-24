@@ -1,14 +1,32 @@
 @import "./colors.scss";
 
 @mixin btn($type) {
-  @if $type == "main" {
+  @if $type=="main" {
+    min-width: 180px;
     background: linear-gradient(to bottom left, $accent, $daccent);
     padding: 10px 50px;
     color: white;
     font-size: 18px;
     border-radius: 100px;
+
     &:hover {
-      box-shadow: 0px 8px 40px rgba($color: $daccent, $alpha: 0.5);
+      box-shadow: 0px 0px 40px rgba($color: $daccent, $alpha: 0.5);
+    }
+  }
+
+  @if $type=="sec" {
+    min-width: 180px;
+    background: white;
+    padding: 10px 50px;
+    color: $daccent;
+    font-size: 18px;
+    border-radius: 100px;
+    // box-shadow: 0px 0px 20px rgba($color: $mgray, $alpha: 0.6);
+    border: 1px solid rgba($color: $lgray, $alpha: 0.6);
+
+    &:hover {
+      background: white;
+      box-shadow: 0px 0px 40px rgba($color: $mgray, $alpha: 0.5);
     }
   }
 }
@@ -22,6 +40,7 @@
   button.main {
     @include btn("main");
   }
+
   .input:last-child {
     text-align: right;
   }
@@ -32,6 +51,7 @@
   right: 0;
   top: 0;
   width: fit-content;
+
   img {
     width: 34vw;
     max-width: 600px;

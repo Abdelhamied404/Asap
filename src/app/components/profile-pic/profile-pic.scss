@@ -1,0 +1,24 @@
+@import "../../../styles/all.inc.scss";
+
+.profile-pic {
+    position: relative;
+
+    .pic {
+        img {
+            max-width: 150px;
+        }
+    }
+
+    .icon {
+        position: absolute;
+        bottom: 0;
+        right: 10px;
+        width: 50px;
+
+        img {
+            opacity: 0.95;
+            border-radius: 15px;
+            max-width: 50px;
+        }
+    }
+}
