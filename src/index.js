@@ -18,6 +18,7 @@ const store = createStore(reducer, applyMiddleware(thunk));
 
 ReactDOM.render(
   <Provider store={store}>
+    <p>"{process.env.REACT_APP_TOML_ENV_VAR}"</p>
     <App />
   </Provider>,
   document.getElementById("root")
