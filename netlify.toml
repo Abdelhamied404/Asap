@@ -3,8 +3,3 @@
   publish = "build"
 
 [context.production.environment]
-REACT_APP_API_URL = "https://asap-api.herokuapp.com/api/"
-REACT_APP_LOCAL_API_URL = "http://asap.api/api/"
-REACT_APP_API_KEY = "lZPAsTDxJsuvmibm1nnTlh1cwt8ybZ28"
-REACT_APP_DEV_PUSHER_KEY = "c02803c5006db13ff4cb"
-REACT_APP_PROD_PUSHER_KEY = "64aa745bce775882750d"
