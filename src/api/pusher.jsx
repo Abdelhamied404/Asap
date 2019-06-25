@@ -1,6 +1,8 @@
 import Pusher from "pusher-js";
 
-const key = "c02803c5006db13ff4cb";
+const IS_DEV = !process.env.NODE_ENV || process.env.NODE_ENV === 'development';
+const key = IS_DEV ? process.env.REACT_APP_DEV_PUSHER_KEY : process.env.REACT_APP_PROD_PUSHER_KEY;
+
 Pusher.logToConsole = true;
 
 export const pusher = new Pusher(key, {
