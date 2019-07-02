@@ -26,13 +26,10 @@ const Nav = props => {
               </NavLink>
             </li>
             <li>
-              <NavLink to="/community">community</NavLink>
+              <NavLink to="/sections">Sections</NavLink>
             </li>
             <li>
-              <NavLink to="/reserve">Reserve</NavLink>
-            </li>
-            <li>
-              <NavLink to="/find">find</NavLink>
+              <NavLink to="/community">Community</NavLink>
             </li>
           </ul>
         </menu>

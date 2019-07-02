@@ -42,3 +42,9 @@ export const PROFILE = {
   GET: "GET",
   LOADERR: "LOADERR"
 };
+
+export const APPOINTMENT = {
+  GET: "GET",
+  RESERVE: "RESERVE",
+  LOADERR: "LOADERR"
+}

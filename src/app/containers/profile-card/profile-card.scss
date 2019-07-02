@@ -3,7 +3,27 @@
 .profile-card {
     display: flex;
     flex-wrap: wrap;
-    margin: 50px 0 30px 20px;
+    max-width: fit-content;
+
+    &.vertical {
+        margin: -50px 0 30px 20px;
+        flex-direction: column;
+        text-align: center;
+
+        .profile-pic {
+            margin: auto;
+        }
+
+        .info {
+
+            .country,
+            .speciality {
+                display: flex;
+                justify-content: center;
+            }
+        }
+
+    }
 
     .profile-pic {
         margin-right: 50px;

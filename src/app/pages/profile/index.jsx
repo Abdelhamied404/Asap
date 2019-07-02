@@ -1,16 +1,21 @@
 import React, { Component } from "react";
 import Nav from "../../components/nav";
 import { connect } from "react-redux";
+import { NavLink } from "react-router-dom";
 import { auth } from "../../../actions/user";
 import ProfileCard from "../../containers/profile-card";
 import { get } from "../../../actions/profile";
 import { Button } from "@material-ui/core";
 
 import "./profile.scss";
+import ProfilePic from "../../components/profile-pic";
+import { Checkbox } from "@material-ui/core";
+import Dropzone from "react-dropzone";
 
 class Profile extends Component {
   state = {
-    isUser: false
+    isUser: false,
+    isDoctor: false
   };
   componentDidMount() {
     this.props.auth();
@@ -39,7 +44,19 @@ class Profile extends Component {
         <div className="page">
           <div className="profile">
             <Nav profile isAuth={this.props.isAuth} user={this.props.user} />
-            <p>this is your profile page</p>
+            <div className="settings">
+              <div className="check">
+                <Checkbox
+                  checked={this.state.isDoctor}
+                  onChange={() => { this.setState({ isDoctor: !this.state.isDoctor }); }}
+                  value="isDoctor"
+                />
+              </div>
+              <div className={"upload" + (!this.state.isDoctor ? " hide" : "")}>
+                <p>upload your certificate pls</p>
+                <input type="file" onChange={()=>{console.log("file uploaded")}}/>
+              </div>
+            </div>
           </div>
         </div>
       );
@@ -73,12 +90,16 @@ class Profile extends Component {
             <div className="actions">
               <div className="reserve-btn">
                 <div className="input">
-                  <Button className="rounded main">Reserve</Button>
+                  <NavLink to={this.props.profile.loaded ? "/reserve/" + this.props.profile.user.username : ""}>
+                    <Button className="rounded main">Reserve</Button>
+                  </NavLink>
                 </div>
               </div>
               <div className="chat-btn">
                 <div className="input">
-                  <Button className="rounded sec">Chat</Button>
+                  <NavLink to="">
+                    <Button className="rounded sec">Chat</Button>
+                  </NavLink>
                 </div>
               </div>
             </div>

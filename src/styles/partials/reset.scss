@@ -1,16 +1,23 @@
 @import "../all.inc.scss";
 
+.hide {
+  display: none;
+}
+
+
 // custom react-router link
 #popup-menu {
   *:focus {
     outline: none;
   }
 }
+
 a:not(.default) {
   text-decoration: none;
   text-transform: capitalize;
   color: black;
 }
+
 button {
   &[class*="rounded"] {
     border-radius: 100px;

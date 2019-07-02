@@ -1,38 +1,62 @@
-import React, { Component } from "react";
-import Nav from "../../components/nav";
-
-import { auth } from "../../../actions/user";
+import React, { Component } from 'react';
 import { connect } from "react-redux";
+import { auth } from "../../../actions/user";
+import Nav from "../../components/nav";
+import ProfileCard from '../../containers/profile-card';
+import { get } from "../../../actions/profile";
 
-import Sections from "../../containers/sections";
+import "./reserve.scss";
+import { getAppointments, reserve } from '../../../actions/appointment';
+import Appointments from '../../containers/appointments';
+import { Button } from "@material-ui/core";
 
 class Reserve extends Component {
-  state = {};
+    state = {
+    };
+    componentDidMount() {
+        this.props.auth();
+        let username = this.props.match.params.name;
+        console.log(username);
+        this.props.getProfile(username);
+        this.props.getAppointments(24);
+    }
 
-  componentDidMount() {
-    this.props.auth();
-  }
+    render() {
+        return (
+            <div className="page">
+                <div className="reserve">
+                    <Nav profile isAuth={this.props.isAuth} user={this.props.user} />
+                    <div className="content">
+                        {this.props.profile.loaded ? <ProfileCard vertical {...this.props.profile} /> : ""}
+                        <div className="table">
+                            <Appointments />
+                            <Button onClick={this.reserve.bind(this)} className="rounded main">Reserve</Button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        );
+    }
 
-  render() {
-    return (
-      <div className="page">
-        <div className="reserve">
-          <Nav profile isAuth={this.props.isAuth} user={this.props.user} />
-          <Sections />
-        </div>
-      </div>
-    );
-  }
+    reserve() {
+        let id = document.querySelector(".selected").id;
+        this.props.reserve(id);
+
+    }
+
+
+
 }
-
-const mapStateToProps = ({ user }) => ({ ...user });
+const mapStateToProps = ({ user, profile, appointment }) => ({ ...user, profile, appointment });
 const mapDispatchToProps = dispatch => {
-  return {
-    auth: () => dispatch(auth())
-  };
+    return {
+        auth: () => dispatch(auth()),
+        getProfile: username => dispatch(get(username)),
+        getAppointments: doctor_id => dispatch(getAppointments(doctor_id)),
+        reserve: (id) => dispatch(reserve(id))
+    };
 };
-
 export default connect(
-  mapStateToProps,
-  mapDispatchToProps
+    mapStateToProps,
+    mapDispatchToProps
 )(Reserve);

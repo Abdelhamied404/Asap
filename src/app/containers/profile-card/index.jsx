@@ -7,9 +7,8 @@ const ProfileCard = props => {
   if (props.loaded === 1) {
     // loaded
     let user = props.user;
-    console.log(user);
     return (
-      <div className="profile-card">
+      <div className={"profile-card" + (props.vertical ? " vertical" : "")}>
         <div className="profile-pic">
           <ProfilePic pic={user.avatar} icon={user.doctor.section.icon} />
         </div>

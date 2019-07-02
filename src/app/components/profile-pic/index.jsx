@@ -4,6 +4,7 @@ import Aux from "../../containers/hoc";
 import "./profile-pic.scss";
 
 const ProfilePic = props => {
+  console.log(props);
   return (
     <Aux>
       <div className="pic">

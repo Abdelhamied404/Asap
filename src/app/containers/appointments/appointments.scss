@@ -1,0 +1,16 @@
+.appointments {
+    display: flex;
+    flex-direction: column;
+
+    .row {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+        .date {
+            margin-right: 30px;
+            margin-top: 25px;
+        }
+
+    }
+}
