@@ -44,7 +44,7 @@ class Community extends Component {
 const mapStateToProps = ({ user }) => ({ ...user });
 const mapDispatchToProps = dispatch => {
   return {
-    auth: () => dispatch(auth())
+    auth: (next) => dispatch(auth(next))
   };
 };
 

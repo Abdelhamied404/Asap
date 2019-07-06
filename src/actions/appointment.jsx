@@ -59,11 +59,40 @@ export const reserve = (id) => {
                 dispatch(Reserve(res.data));
                 alert(res.data.message);
                 if (res.data.status !== "error") {
-                    history.push("/chat");
+                    let data = {
+                        "recipients": [id]
+                    };
+                    API.post("chat", data, conf)
+                        .then(() => {
+                            history.push("/community");
+                        }).catch((err) => {
+                            console.log(err);
+                        });
                 }
             }).catch(err => {
                 console.log(err);
             })
+
+    }
+}
+export const chat = (id) => {
+    return dispatch => {
+        const token = cookie.get("auth");
+        const conf = {
+            headers: {
+                Authorization: token
+            }
+        };
+
+        let data = {
+            "recipients": [id]
+        };
+        API.post("chat", data, conf)
+            .then(() => {
+                history.push("/community");
+            }).catch((err) => {
+                console.log(err);
+            });
 
     }
 }

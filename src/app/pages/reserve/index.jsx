@@ -50,10 +50,10 @@ class Reserve extends Component {
 const mapStateToProps = ({ user, profile, appointment }) => ({ ...user, profile, appointment });
 const mapDispatchToProps = dispatch => {
     return {
-        auth: () => dispatch(auth()),
+        auth: (next) => dispatch(auth(next)),
         getProfile: username => dispatch(get(username)),
         getAppointments: doctor_id => dispatch(getAppointments(doctor_id)),
-        reserve: (id) => dispatch(reserve(id))
+        reserve: (id) => dispatch(reserve(id)),
     };
 };
 export default connect(

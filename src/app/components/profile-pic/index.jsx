@@ -10,9 +10,10 @@ const ProfilePic = props => {
       <div className="pic">
         <img src={props.pic} alt="" />
       </div>
-      <div className="icon">
+      {props.icon ? <div className="icon">
         <img src={props.icon} alt="" />
-      </div>
+      </div> : ""}
+      
     </Aux>
   );
 };

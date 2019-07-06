@@ -1,6 +1,44 @@
 @import "../../../styles/all.inc.scss";
 
 .profile {
+    .settings {
+        .check {
+            display: flex;
+            align-items: center;
+
+            p {
+                margin-top: -5px;
+            }
+        }
+
+        .upload {
+            height: 200px;
+        }
+
+        .pic {
+            width: fit-content;
+        }
+
+        .profile-pic-container {
+            position: relative;
+
+            .container {
+                display: flex;
+                align-items: center;
+
+                .pic img {
+                    width: 150px;
+                }
+
+                input {
+                    margin: 0 40px;
+                }
+            }
+
+        }
+
+    }
+
     .about {
         display: flex;
         flex-wrap: wrap;

@@ -47,9 +47,6 @@ class NavProfile extends Component {
           <NavLink to="/profile">
             <MenuItem className="popup-menu-item">Profile</MenuItem>
           </NavLink>
-          <NavLink to="/settings">
-            <MenuItem className="popup-menu-item">Settings</MenuItem>
-          </NavLink>
           <MenuItem onClick={this.props.logout} className="popup-menu-item">
             Logout
           </MenuItem>

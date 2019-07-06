@@ -57,8 +57,7 @@ class Speciality extends Component {
 const mapStateToProps = ({ user, section }) => ({ ...user, section });
 const mapDispatchToProps = dispatch => {
   return {
-    auth: () => dispatch(auth()),
-    getSections: () => dispatch(getSections())
+    auth: (next) => dispatch(auth(next)), getSections: () => dispatch(getSections())
   };
 };
 export default connect(

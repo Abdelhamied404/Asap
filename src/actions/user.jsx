@@ -27,7 +27,7 @@ const ValidErr = payload => {
  * exports
  */
 // auth
-export const auth = () => {
+export const auth = (_callback) => {
   return dispatch => {
     const token = cookie.get("auth");
     const conf = {
@@ -40,6 +40,8 @@ export const auth = () => {
       .then(res => {
         let payload = res.data;
         dispatch(Auth(payload));
+        if (_callback)
+          _callback();
       })
       .catch(err => {
         dispatch(AuthErr());
@@ -129,6 +131,32 @@ export const login = creds => {
     }
   };
 };
+
+export const changePic = pic => {
+  return dispatch => {
+    console.log("pic", pic);
+    const token = cookie.get("auth");
+
+    let fd = new FormData();
+    fd.append("avatar", pic);
+
+    const conf = {
+      headers: {
+        'Content-Type': pic.type,
+        Authorization: token
+      }
+    };
+
+    API.post("user/update", fd, conf)
+      .then((res) => {
+        console.log(res.data);
+      }).catch((err) => {
+        console.log(err);
+      })
+  }
+}
+
+
 
 /**
  *

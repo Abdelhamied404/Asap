@@ -2,23 +2,39 @@ import React, { Component } from "react";
 import Nav from "../../components/nav";
 import { connect } from "react-redux";
 import { NavLink } from "react-router-dom";
-import { auth } from "../../../actions/user";
+import { auth, changePic } from "../../../actions/user";
 import ProfileCard from "../../containers/profile-card";
 import { get } from "../../../actions/profile";
 import { Button } from "@material-ui/core";
+import { chat } from '../../../actions/appointment';
 
 import "./profile.scss";
-import ProfilePic from "../../components/profile-pic";
 import { Checkbox } from "@material-ui/core";
-import Dropzone from "react-dropzone";
+import FileDrop from 'react-file-drop';
+import ProfilePic from "../../components/profile-pic";
+import { registerDoctor } from "../../../actions/doctor";
+
 
 class Profile extends Component {
   state = {
     isUser: false,
-    isDoctor: false
+    isDoctor: false,
+    file_names: [],
+    files: []
   };
   componentDidMount() {
-    this.props.auth();
+    this.props.auth(this.afterAuth.bind(this));
+  }
+
+  afterAuth() {
+    if (this.props.user.doctor) {
+      this.setState({ file_names: [this.props.user.doctor.certificate.split("/").slice(-1)[0]] });
+      this.setState({ isDoctor: true });
+    }
+    else {
+      this.setState({ file_names: [] });
+      this.setState({ isDoctor: false });
+    }
   }
 
   componentDidUpdate() {
@@ -36,6 +52,29 @@ class Profile extends Component {
     this.setState({ isUser: false });
   }
 
+  onDrop(files) {
+    let nf = [];
+    let f = [];
+    for (const key in files)
+      if (!isNaN(key)) {
+        nf = [...nf, files[key].name];
+        f = [...f, files[key]];
+      }
+
+    this.setState({ file_names: nf });
+    this.setState({ files: f });
+  }
+
+  save() {
+    let input_pic = document.getElementById("pic-upload");
+    let pic = input_pic.files[0];
+    this.props.changePic(pic);
+
+    let certificate = this.state.files[0];
+    let sec_id = this.props.user.doctor.section.id;
+    this.props.registerDoctor(certificate, sec_id);
+  }
+
   render() {
     let type = this.props.match.path.split("/")[1];
 
@@ -43,18 +82,38 @@ class Profile extends Component {
       return (
         <div className="page">
           <div className="profile">
+            <p id="test"></p>
             <Nav profile isAuth={this.props.isAuth} user={this.props.user} />
             <div className="settings">
-              <div className="check">
-                <Checkbox
-                  checked={this.state.isDoctor}
-                  onChange={() => { this.setState({ isDoctor: !this.state.isDoctor }); }}
-                  value="isDoctor"
-                />
+              <div className="pic">
+                <div className="update" id="pic-upload-btn">
+                  <div className="profile-pic-container">
+                    <div className="container">
+                      <ProfilePic pic={this.props.user.avatar}></ProfilePic>
+                      <input id="pic-upload" type="file" />
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div className={"upload" + (!this.state.isDoctor ? " hide" : "")}>
-                <p>upload your certificate pls</p>
-                <input type="file" onChange={()=>{console.log("file uploaded")}}/>
+              <div className="certificate">
+                <div className="check">
+                  <p>are you a doctor</p>
+                  <Checkbox
+                    checked={this.state.isDoctor}
+                    onChange={() => { this.setState({ isDoctor: !this.state.isDoctor }); }}
+                    value="isDoctor"
+                  />
+                </div>
+                <div className={"upload" + (!this.state.isDoctor ? " hide" : "")}>
+                  <FileDrop onDrop={this.onDrop.bind(this)}>
+                    <p>{this.state.file_names.length !== 0 ? this.state.file_names.join(", ") : "Drop your certificate in here pls"}</p>
+                  </FileDrop>
+                </div>
+              </div>
+              <div className="input">
+                <Button className="rounded main" onClick={this.save.bind(this)}>
+                  Save
+                </Button>
               </div>
             </div>
           </div>
@@ -67,26 +126,7 @@ class Profile extends Component {
         <div className="page">
           <div className="profile">
             <Nav profile isAuth={this.props.isAuth} user={this.props.user} />
-            <ProfileCard {...this.props.profile} />
-            <div className="about">
-              <div className="feedback">
-                {/* feedback is not in database yet */}
-                <p>
-                  {this.props.profile.loaded
-                    ? this.props.profile.user.doctor.rate
-                    : ""}
-                </p>
-              </div>
-              <div className="description">
-                {/* this should be descripition but it's not in database yet */}
-                <p>
-                  {this.props.profile.loaded
-                    ? this.props.profile.user.doctor.certificate
-                    : ""}
-                </p>
-              </div>
-            </div>
-
+            <ProfileCard loaded={1} user={this.props.profile.user} />
             <div className="actions">
               <div className="reserve-btn">
                 <div className="input">
@@ -98,7 +138,7 @@ class Profile extends Component {
               <div className="chat-btn">
                 <div className="input">
                   <NavLink to="">
-                    <Button className="rounded sec">Chat</Button>
+                    <Button onClick={() => this.props.chat(this.props.profile.user.id)} className="rounded sec">Chat</Button>
                   </NavLink>
                 </div>
               </div>
@@ -112,8 +152,11 @@ class Profile extends Component {
 const mapStateToProps = ({ user, profile }) => ({ ...user, profile });
 const mapDispatchToProps = dispatch => {
   return {
-    auth: () => dispatch(auth()),
-    getProfile: username => dispatch(get(username))
+    auth: (next) => dispatch(auth(next)),
+    getProfile: username => dispatch(get(username)),
+    changePic: pic => dispatch(changePic(pic)),
+    registerDoctor: (certificate, sec_id) => dispatch(registerDoctor(certificate, sec_id)),
+    chat: (id) => dispatch(chat(id)),
   };
 };
 

@@ -4,9 +4,10 @@ import ProfilePic from "../../components/profile-pic";
 import "./profile-card.scss";
 
 const ProfileCard = props => {
-  if (props.loaded === 1) {
+  console.log("bug", props);
+  if (props.loaded === 1 && props.user) {
     // loaded
-    let user = props.user;
+    let { user } = props;
     return (
       <div className={"profile-card" + (props.vertical ? " vertical" : "")}>
         <div className="profile-pic">
@@ -45,6 +46,7 @@ const ProfileCard = props => {
     // load error
     return "load error";
   }
+
 };
 
 const rate = num => {
