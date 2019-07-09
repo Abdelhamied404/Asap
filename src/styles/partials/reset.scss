@@ -5,6 +5,11 @@
   display: none;
 }
 
+*::selection {
+  background: #444;
+  color: #fff;
+}
+
 
 // custom react-router link
 #popup-menu {
