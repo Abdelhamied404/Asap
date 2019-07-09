@@ -48,3 +48,8 @@ export const APPOINTMENT = {
   RESERVE: "RESERVE",
   LOADERR: "LOADERR"
 }
+
+export const SEARCH = {
+  LOAD: "LOAD",
+  LOADERR: "LOADERR"
+}

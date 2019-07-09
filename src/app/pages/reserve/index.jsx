@@ -41,7 +41,6 @@ class Reserve extends Component {
     reserve() {
         let id = document.querySelector(".selected").id;
         this.props.reserve(id);
-
     }
 
 

@@ -14,6 +14,7 @@ import Profile from "./pages/profile";
 import Reserve from "./pages/reserve";
 
 import "./layout.scss";
+import Search from "./pages/search";
 
 class Layout extends Component {
   state = {};
@@ -31,6 +32,7 @@ class Layout extends Component {
             <Route path="/profile" exact component={Profile} />
             <Route path="/user/:name" component={Profile} />
             <Route path="/reserve/:name" component={Reserve} />
+            <Route path="/search" component={Search} />
           </Switch>
         </Router>
       </Aux>

@@ -31,6 +31,9 @@ const Nav = props => {
             <li>
               <NavLink to="/community">Community</NavLink>
             </li>
+            <li>
+              <NavLink to="/search">Search</NavLink>
+            </li>
           </ul>
         </menu>
       </div>

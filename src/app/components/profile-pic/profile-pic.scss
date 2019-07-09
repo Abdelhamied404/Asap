@@ -3,7 +3,8 @@
 .profile-pic {
     position: relative;
 
-    .pic {
+    .pic,
+    .avatar {
         img {
             width: 150px;
             height: 150px;
@@ -23,5 +24,9 @@
             border-radius: 15px;
             max-width: 50px;
         }
+    }
+
+    .name p {
+        text-align: center;
     }
 }

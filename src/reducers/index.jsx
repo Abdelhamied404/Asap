@@ -7,6 +7,7 @@ import comment from "./comment";
 import chat from "./chat";
 import appointment from "./appointment";
 import profile from "./profile";
+import search from "./search";
 import { reducer as reduxFormReducer } from "redux-form";
 
 const root = combineReducers({
@@ -18,7 +19,8 @@ const root = combineReducers({
   comment: comment,
   chat: chat,
   appointment: appointment,
-  profile: profile
+  profile: profile,
+  search: search,
 });
 
 export default root;
