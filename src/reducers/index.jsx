@@ -8,11 +8,13 @@ import chat from "./chat";
 import appointment from "./appointment";
 import profile from "./profile";
 import search from "./search";
+import auth_user from "./auth_user";
 import { reducer as reduxFormReducer } from "redux-form";
 
 const root = combineReducers({
   form: reduxFormReducer,
   user: user,
+  auth_user: auth_user,
   doctor: doctor,
   section: section,
   post: post,

@@ -1,8 +1,6 @@
 import { DOCTOR } from "./types";
 import API from "../api";
 import * as cookie from "./utils/cookie";
-import history from "./history";
-import { auth } from "./user";
 
 const Load = (type, payload) => {
   return {

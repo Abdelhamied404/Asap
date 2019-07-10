@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import TextField from "./TextField";
 import EmailField from "./EmailField";
 import PasswordField from "./PasswordField";
+import { connect } from "react-redux";
 
 import CheckBox from "./CheckBox";
 import DropDown from "./DropDown";
@@ -29,7 +30,6 @@ class Field extends Component {
       ...this.props,
       ...this.state.meta,
       ...this.state.methods,
-      errors: {}
     };
 
     switch (this.props.type) {
@@ -54,4 +54,9 @@ class Field extends Component {
   }
 }
 
-export default Field;
+const mapStateToProps = ({ auth_user }) => ({ ...auth_user });
+
+export default connect(
+  mapStateToProps,
+  null
+)(Field);

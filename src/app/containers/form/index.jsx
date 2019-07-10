@@ -8,12 +8,11 @@ import LoginForm from "./login-form";
 import { connect } from "react-redux";
 
 const Form = props => {
-  console.log(props.register);
   return props.register ? (
     <SignupForm action={() => props.signup(props.signupForm.values)} />
   ) : (
-    <LoginForm action={() => props.login(props.loginForm.values)} />
-  );
+      <LoginForm action={() => props.login(props.loginForm.values)} />
+    );
 };
 
 // redux

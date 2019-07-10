@@ -24,11 +24,7 @@ class SimpleSelect extends React.Component {
             {this.props.children}
           </Select>
           <FormHelperText>
-            {
-              <span className="error">
-                {this.props.errors[this.props.name]}
-              </span>
-            }
+            {this.props.valid ? <span className="error">{this.props.errors[this.props.label]}</span> : ""}
           </FormHelperText>
         </FormControl>
       </div>

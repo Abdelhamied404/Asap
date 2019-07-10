@@ -106,8 +106,8 @@ export const login = creds => {
   return dispatch => {
     let errors = {};
     // validating
-    if (!creds.email) errors["email"] = "required";
-    if (creds.email && !email(creds.email)) errors["email"] = "email not valid";
+    if (!creds || !creds.email) errors["email"] = "required";
+    if (creds && creds.email && !email(creds.email)) errors["email"] = "email not valid";
 
     if (Object.keys(errors).length === 0) {
       // no errors
@@ -166,19 +166,21 @@ const validate = user => {
   let errors = {};
 
   //requried
-  if (!user.name) errors["name"] = "required";
-  if (!user.email) errors["email"] = "required";
-  if (!user.password) errors["password"] = "required";
-  if (!user.gender) errors["gender"] = "required";
+  if (!user || !user.name) errors["name"] = "required";
+  if (!user || !user.email) errors["email"] = "required";
+  if (!user || !user.password) errors["password"] = "required";
+  if (!user || !user.gender) errors["gender"] = "required";
 
   // length
-  if (user.name && user.name.length < 3)
-    errors["name"] = "3 characters minimum";
-  if (user.password && user.password.length < 6)
-    errors["password"] = "6 characters minimum";
+  if (user) {
+    if (user.name && user.name.length < 3)
+      errors["name"] = "3 characters minimum";
+    if (user.password && user.password.length < 6)
+      errors["password"] = "6 characters minimum";
 
-  // email
-  if (user.email && !email(user.email)) errors["email"] = "not a valid email";
+    // email
+    if (user.email && !email(user.email)) errors["email"] = "not a valid email";
+  }
 
   return errors;
 };

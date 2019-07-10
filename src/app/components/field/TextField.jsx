@@ -15,20 +15,20 @@ const TextField = props => {
           InputProps={{ disableUnderline: true }}
         />
       ) : (
-        <TextInput
-          {...props.input}
-          value={props.val}
-          onKeyPress={props.onKeyPress}
-          className={props.naked ? "naked" : null}
-          multiline={props.multiline}
-          fullWidth
-          onBlur={props.handleBlur}
-          label={props.label}
-          variant="filled"
-          helperText={<span className="error">{props.errors[props.name]}</span>}
-          InputProps={{ disableUnderline: true }}
-        />
-      )}
+          <TextInput
+            {...props.input}
+            value={props.val}
+            onKeyPress={props.onKeyPress}
+            className={props.naked ? "naked" : null}
+            multiline={props.multiline}
+            fullWidth
+            onBlur={props.handleBlur}
+            label={props.label}
+            variant="filled"
+            helperText={props.valid ? <span className="error">{props.errors[props.label]}</span> : ""}
+            InputProps={{ disableUnderline: true }}
+          />
+        )}
     </div>
   );
 };

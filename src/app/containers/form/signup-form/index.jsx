@@ -14,15 +14,16 @@ const SignupForm = props => {
       </div>
       <form action="">
         <AuthTip signup />
-        <Field label="name" name="name" component={Input} />
-        <Field label="email" name="email" type="email" component={Input} />
+        <Field valid label="name" name="name" component={Input} />
+        <Field valid label="email" name="email" type="email" component={Input} />
         <Field
+          valid
           label="password"
           name="password"
           type="password"
           component={Input}
         />
-        <Field label="gender" name="gender" type="dropdown" component={Input}>
+        <Field valid label="gender" name="gender" type="dropdown" component={Input}>
           <MenuItem value={"male"}>Male</MenuItem>
           <MenuItem value={"female"}>Female</MenuItem>
         </Field>
