@@ -6,6 +6,7 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 import Drawer from "../drawer";
 
 const Nav = props => {
+  console.log(props);
   return (
     <nav>
       <div className="nav-bar">
@@ -34,6 +35,13 @@ const Nav = props => {
             <li>
               <NavLink to="/search">Search</NavLink>
             </li>
+            {props.user && props.user.doctor && props.user.doctor.is_trusted === 1 ?
+              <li>
+                <NavLink to="/check">Check Code</NavLink>
+              </li>
+              :
+              null}
+
           </ul>
         </menu>
       </div>

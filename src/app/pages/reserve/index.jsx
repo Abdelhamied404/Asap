@@ -18,7 +18,10 @@ class Reserve extends Component {
         let username = this.props.match.params.name;
         console.log(username);
         this.props.getProfile(username);
-        this.props.getAppointments(24);
+
+        let parts = username.split("-")
+        let id = parts[parts.length-1];
+        this.props.getAppointments(id);
     }
 
     render() {

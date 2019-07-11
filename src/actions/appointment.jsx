@@ -64,7 +64,7 @@ export const reserve = (id) => {
                     };
                     API.post("chat", data, conf)
                         .then(() => {
-                            history.push("/community");
+                            history.push("/code/" + id);
                         }).catch((err) => {
                             console.log(err);
                         });

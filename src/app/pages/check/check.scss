@@ -1,0 +1,22 @@
+.page {
+    .check {
+
+        .content {
+            margin-top: 200px;
+            display: flex;
+            flex-direction: column;
+
+            .text-field,
+            .check-button {
+                margin: auto;
+                width: auto;
+                height: auto;
+            }
+
+            .text-field {
+                min-width: 70%;
+                margin-bottom: 40px;
+            }
+        }
+    }
+}

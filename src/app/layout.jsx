@@ -15,6 +15,8 @@ import Reserve from "./pages/reserve";
 
 import "./layout.scss";
 import Search from "./pages/search";
+import Code from "./pages/code";
+import Check from "./pages/check";
 
 class Layout extends Component {
   state = {};
@@ -33,6 +35,8 @@ class Layout extends Component {
             <Route path="/user/:name" component={Profile} />
             <Route path="/reserve/:name" component={Reserve} />
             <Route path="/search" component={Search} />
+            <Route path="/code/:id" component={Code} />
+            <Route path="/check" component={Check} />
           </Switch>
         </Router>
       </Aux>

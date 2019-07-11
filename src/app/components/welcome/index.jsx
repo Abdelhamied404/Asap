@@ -13,8 +13,8 @@ const Welcome = () => {
                         </div>
 
                         <div className="feature-content">
-                            <h3>Advanced Care</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor.</p>
+                            <h3>Reservation</h3>
+                            <p>find a doctor and reserve your appointment fast, clean and easy.</p>
                         </div>
                     </div>
                 </div>
@@ -25,8 +25,8 @@ const Welcome = () => {
                         </div>
 
                         <div className="feature-content">
-                            <h3>Respite Care</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor.</p>
+                            <h3>Community</h3>
+                            <p>get some advices from profissional doctors or a paient who might experniced this illness.</p>
                         </div>
                     </div>
                 </div>
@@ -37,8 +37,8 @@ const Welcome = () => {
                         </div>
 
                         <div className="feature-content">
-                            <h3>Daily Care</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor.</p>
+                            <h3>Doctor Recommendation</h3>
+                            <p>recommend doctors by higher rates and accourding to your illness.</p>
                         </div>
                     </div>
                 </div>
@@ -49,8 +49,8 @@ const Welcome = () => {
                         </div>
 
                         <div className="feature-content">
-                            <h3>Neuorology Care</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor.</p>
+                            <h3>Chat</h3>
+                            <p>talk directly to doctors and ask them for advices or consultant.</p>
                         </div>
                     </div>
                 </div>
@@ -60,15 +60,16 @@ const Welcome = () => {
                 <div className="about-right-side pt-25 mb-30">
                     <div className="about-title mb-20">
                         <h5 className="title">About Us</h5>
-                        <h1>Short Story About MediDove Clinic.</h1>
+                        <h1>Short Story About Asap.</h1>
                     </div>
                     <div className="about-text">
-                        <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.</p>                            </div>
+                        <p>Main goal about this project is to enable people living on the land of egypt and visitors to find the doctors they need easliy in quick way with just a click and easily communicate with them</p>
+                    </div>
                     <div className="about-text-list">
                         <ul>
-                            <li><i className="fa fa-check"></i><span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do.</span></li>
-                            <li><i className="fa fa-check"></i><span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do.</span></li>
-                            <li><i className="fa fa-check"></i><span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do.</span></li>
+                            <li><i className="fa fa-check"></i><span>facilitate the searching process for a doctor.</span></li>
+                            <li><i className="fa fa-check"></i><span>community to get advice from paient who experniced this illness.</span></li>
+                            <li><i className="fa fa-check"></i><span>provide fast and accurate response to users.</span></li>
                         </ul>
                     </div>
                 </div>
