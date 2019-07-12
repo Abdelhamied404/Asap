@@ -13,6 +13,7 @@ import { Checkbox } from "@material-ui/core";
 import FileDrop from 'react-file-drop';
 import ProfilePic from "../../components/profile-pic";
 import { registerDoctor } from "../../../actions/doctor";
+import Footer from "../../components/footer";
 
 
 class Profile extends Component {
@@ -116,6 +117,7 @@ class Profile extends Component {
                 </Button>
               </div>
             </div>
+            <Footer />
           </div>
         </div>
       );

@@ -7,6 +7,7 @@ import { Button } from '@material-ui/core';
 import ProfilePic from '../../components/profile-pic';
 
 import "./search.scss";
+import Footer from '../../components/footer';
 
 class Search extends Component {
     state = {}
@@ -43,6 +44,7 @@ class Search extends Component {
                     <div className="results">
                         {this.load_results(this.props.search)}
                     </div>
+                    <Footer />
                 </div>
             </div>
         );

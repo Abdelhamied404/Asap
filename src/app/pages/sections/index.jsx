@@ -5,6 +5,7 @@ import { auth } from "../../../actions/user";
 import { connect } from "react-redux";
 
 import Sections from "../../containers/sections";
+import Footer from "../../components/footer";
 
 class SectionsPage extends Component {
   state = {};
@@ -20,6 +21,7 @@ class SectionsPage extends Component {
           <Nav profile isAuth={this.props.isAuth} user={this.props.user} />
           <Sections />
         </div>
+        <Footer />
       </div>
     );
   }

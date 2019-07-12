@@ -8,6 +8,7 @@ import * as cookie from "../../../actions/utils/cookie";
 import API from '../../../api';
 
 import "./check.scss";
+import Footer from '../../components/footer';
 
 class Check extends Component {
     state = {
@@ -46,7 +47,9 @@ class Check extends Component {
                             :
                             null}
                     </div>
+
                 </div>
+                <Footer />
             </div>
         );
     }

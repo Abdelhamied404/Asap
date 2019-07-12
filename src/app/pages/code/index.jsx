@@ -4,6 +4,7 @@ import { auth } from "../../../actions/user";
 import Nav from '../../components/nav';
 import API from '../../../api';
 import * as cookie from "../../../actions/utils/cookie";
+import Footer from '../../components/footer';
 
 class Code extends Component {
     state = {
@@ -34,6 +35,7 @@ class Code extends Component {
                     <div className="container"><p>Your Code is</p>
                         <code>{this.state.code}</code>
                     </div>
+                    <Footer />
                 </div>
             </div>
         );

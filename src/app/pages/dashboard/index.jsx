@@ -7,6 +7,7 @@ import Sections from "../../containers/sections";
 import { auth } from "../../../actions/user";
 import { connect } from "react-redux";
 import Welcome from "../../components/welcome";
+import Footer from "../../components/footer";
 
 class Dashboard extends Component {
   state = {};
@@ -21,6 +22,7 @@ class Dashboard extends Component {
           <Recommended />
           <Sections />
           <Welcome />
+          <Footer />
         </div>
       </div>
     );

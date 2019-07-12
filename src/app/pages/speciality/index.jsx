@@ -8,6 +8,7 @@ import { getSections } from "../../../actions/section";
 import Doctors from "../../containers/doctors";
 
 import "./speciality.scss";
+import Footer from "../../components/footer";
 
 class Speciality extends Component {
   state = {
@@ -49,6 +50,7 @@ class Speciality extends Component {
           <div className="content">
             <Doctors doctors={doctors} isErr={wrongSection} />
           </div>
+          <Footer />
         </div>
       </div>
     );

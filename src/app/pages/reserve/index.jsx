@@ -9,6 +9,7 @@ import "./reserve.scss";
 import { getAppointments, reserve } from '../../../actions/appointment';
 import Appointments from '../../containers/appointments';
 import { Button } from "@material-ui/core";
+import Footer from '../../components/footer';
 
 class Reserve extends Component {
     state = {
@@ -20,7 +21,7 @@ class Reserve extends Component {
         this.props.getProfile(username);
 
         let parts = username.split("-")
-        let id = parts[parts.length-1];
+        let id = parts[parts.length - 1];
         this.props.getAppointments(id);
     }
 
@@ -36,6 +37,7 @@ class Reserve extends Component {
                             <Button onClick={this.reserve.bind(this)} className="rounded main">Reserve</Button>
                         </div>
                     </div>
+                    <Footer />
                 </div>
             </div>
         );

@@ -1,0 +1,55 @@
+footer {
+    background: #506171;
+    padding: 50px 150px;
+    padding-bottom: 20px;
+
+    .content {
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+
+            .col {
+                max-width: 400px;
+
+                .title {
+                    font-size: 22px;
+                    font-weight: bold;
+                    margin-bottom: 15px;
+                    color: white;
+
+                }
+
+                .body {
+                    color: white;
+                    font-size: 14px;
+
+                    ul {
+                        list-style-type: none;
+
+                        li {
+                            display: flex;
+                            margin: 10px 0;
+
+                            i {
+                                font-size: 28px;
+                                margin-right: 15px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    hr {
+        border-color: #65798b;
+    }
+
+    .credits {
+        .copyright {
+            color: white;
+            text-align: center;
+        }
+    }
+}
