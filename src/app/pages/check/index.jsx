@@ -25,11 +25,12 @@ class Check extends Component {
                     <div className="content">
                         <div className="text-field">
                             <Input name="code" label="code" type="code" />
+                            <span id="error"></span>
                         </div>
                         <div className="input check-button">
                             <Button className="rounded main" onClick={this.checkCode.bind(this)}>
                                 Check
-                        </Button>
+                            </Button>
                         </div>
                     </div>
                     <div className="data">
@@ -65,7 +66,13 @@ class Check extends Component {
 
         API.get("appointment/code/check?code=" + code, conf)
             .then((res) => {
-                this.setState({ user: res.data.data.user });
+                if (res.data.status === "error") {
+                    let span = document.querySelector(".text-field span#error");
+                    span.innerText = res.data.message;
+
+                } else {
+                    this.setState({ user: res.data.data.user });
+                }
             }).catch((err) => {
                 console.log(err);
             });

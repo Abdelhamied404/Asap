@@ -16,7 +16,7 @@ const LoadErr = () => {
 
 export const Get = (q) => {
     return dispatch => {
-        API.get("user/find/" + q)
+        API.get("doctor/find/" + q)
             .then(res => {
                 const payload = res.data;
                 dispatch(Load(payload));

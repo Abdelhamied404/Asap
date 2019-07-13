@@ -12,14 +12,15 @@ const Chats = props => {
 
   return (
     <div className="chats">
-      {props.loaded === 1 ? list_chats(props.chats) : <CircularProgress />}
+      {props.user.isAuth !== -1 ?  (props.loaded === 1 ? list_chats(props.chats) : <CircularProgress />) : null}
+      {console.log("chat props", props)}
     </div>
   );
 };
 
 const list_chats = list => list.map(chat => <Chat key={chat.id} {...chat} />);
 
-const mapStateToProps = ({ chat }) => ({ ...chat });
+const mapStateToProps = ({ user, chat }) => ({ user, ...chat });
 const mapDispatchToProps = dispatch => {
   return {
     getAllChats: () => dispatch(getAllChats())

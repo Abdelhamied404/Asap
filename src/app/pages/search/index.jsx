@@ -8,6 +8,7 @@ import ProfilePic from '../../components/profile-pic';
 
 import "./search.scss";
 import Footer from '../../components/footer';
+import Doctor from '../../components/doctor';
 
 class Search extends Component {
     state = {}
@@ -21,10 +22,9 @@ class Search extends Component {
     }
 
     load_results(res) {
-        console.log(res);
         if (res.loaded === 1) {
             let users = res.users.data;
-            return users.map((user) => <div className="profile-pic"><ProfilePic {...user} /></div>);
+            return users.map((user) => <div className="profile-pic" key={user.user.id}><Doctor user={user.user} /></div>);
         } else if (res.loaded === 0) {
             return <p></p>;
         } else {
@@ -38,7 +38,7 @@ class Search extends Component {
                 <div className="search">
                     <Nav profile isAuth={this.props.isAuth} user={this.props.user} />
                     <div className="search-bar">
-                        <input type="text" />
+                        <input placeholder="search..." type="text" />
                         <Button className="main rounded" onClick={this.find.bind(this)}>Search</Button>
                     </div>
                     <div className="results">
