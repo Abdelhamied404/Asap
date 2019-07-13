@@ -14,7 +14,7 @@ class Footer extends Component {
                                 <p>Why ASAP</p>
                             </div>
                             <div className="body">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus labore praesentium amet sit molestiae! Culpa alias eveniet repellendus quod, possimus autem eligendi, hic sunt architecto facilis cumque repudiandae accusantium molestias.</p>
+                                <p>Asap is the leading digital healthcare booking platform and practice management software. We are pioneering the shift to automated physician, clinic and hospital bookings making healthcare easily accessible</p>
                             </div>
                         </div>
                         <div className="col">
