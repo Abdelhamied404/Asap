@@ -10,6 +10,7 @@ import { getAppointments, reserve } from '../../../actions/appointment';
 import Appointments from '../../containers/appointments';
 import { Button } from "@material-ui/core";
 import Footer from '../../components/footer';
+import history from '../../../actions/history';
 
 class Reserve extends Component {
     state = {
@@ -20,9 +21,12 @@ class Reserve extends Component {
         console.log(username);
         this.props.getProfile(username);
 
-        let parts = username.split("-")
-        let id = parts[parts.length - 1];
-        this.props.getAppointments(id);
+        if (!this.props.profile.user) {
+            history.push("/user/" + username);
+        } else {
+            let id = this.props.profile.user.doctor.id;
+            this.props.getAppointments(id);
+        }
     }
 
     render() {
